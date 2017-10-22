@@ -53,11 +53,11 @@
 			border: solid 1px #dddddd;
 		}
 		/*主區塊圖片*/
-		.item img{
+		.main_img{
 			min-width:600px;
 			max-width:600px;
 			min-height:400px;
-			max-height:400px
+			max-height:400px;
 		}
 		/*主區塊標題*/
 		.info_title{
@@ -76,10 +76,12 @@
 		.main_block_detail{
 			margin-top: 1em
 		}
+		/*主區塊的小字區塊的小字*/
 		.main_block_detail div{
 			font-family:Microsoft JhengHei;
 			font-size: 1.2em
 		}
+
 		/*細節表單*/
 		.detail-total-form{
 			/*border: solid 1px #dddddd;*/
@@ -99,7 +101,8 @@
 			vertical-align:middle;
 			background:#f00;
 		}	
-		.table_title{
+		/*主區塊外的標題*/
+		.form_title{
 			font-weight: bold;
 			font-size: 1.5em;
 			color:#f37748;
@@ -117,6 +120,32 @@
 			height:60px;
 		}
 		/*廣告CSS結束*/
+		#map {
+			height: 400px;
+			width: 100%;
+		}
+		/*一欄推薦物件*/
+		.rec_item{
+			background-color: white
+		}
+		/*推薦物件的圖片*/
+		.rechouse_Img{
+			width: 100%;
+			height: 210px			
+		}
+		/*推薦物件的標題*/
+		.rec_price{
+			color:red;			
+		}		
+		.mb10{
+			margin-bottom: 20px
+		}
+		.w80{
+			width: 80%;
+		}
+		.pd20{
+			padding: 20px;
+		}
 
 
 	</style>
@@ -124,7 +153,9 @@
 <body background="imgs/sinyi_bg.png">
 
 
-	<nav class="navbar navbar-default nav-color" role="navigation">
+
+	<!-- nav bar -->
+	<nav class="navbar navbar-default nav-color navbar-fixed-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -135,6 +166,7 @@
 				</button>
 				<a class="navbar-brand" href="#">CSS可樂</a>
 			</div>
+
 			<!-- 手機隱藏選單區 -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<!-- 左選單 -->
@@ -144,12 +176,13 @@
 					<li><a href="#">CSS範例</a></li>
 					<li><a href="#">原創CSS</a></li>
 				</ul>
+
 				<!-- 搜尋表單 -->
 		<!-- 		<form class="navbar-form navbar-right" role="search">
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="請輸入關鍵字">
 					</div>
-					<button type="submit" class="btn btn-default">搜尋</button>
+					<button type="submit" class="btn follow_btn btn-default">搜尋</button>
 				</form> -->
 
 				<!-- 右選單 -->
@@ -167,9 +200,9 @@
 					</li>
 				</ul>
 			</div>
-			<!-- 手機隱藏選單區結束 -->
 		</div>
 	</nav>
+	<!-- nav bar結束 -->
 
 	<!-- 麵包屑 -->
 	<div class="container">
@@ -204,16 +237,16 @@
 						</ol>
 						<!-- Wrapper for slides -->
 						<div class="carousel-inner">
-							<div class="item active">
+							<div class="item main_img active">
 								<img src="imgs/livingRoom.jpg" alt="Los Angeles">
 							</div>
-							<div class="item">
+							<div class="item main_img">
 								<img src="imgs/bedRoom.jpg" alt="Chicago">
 							</div>
-							<div class="item">
+							<div class="item main_img">
 								<img src="imgs/kitchen.jpg" alt="Chicago">
 							</div>
-							<div class="item">
+							<div class="item main_img">
 								<img src="imgs/house.jpg" alt="New York">
 							</div>
 						</div>
@@ -291,6 +324,7 @@
 	</div>
 	<!-- 主區塊結束 -->
 
+	<!-- 分隔線 -->
 	<div class="container">
 		<div class="row">
 			<hr>
@@ -304,8 +338,9 @@
 		<!-- 詳細資訊表格左邊 -->
 		<!-- 其中一欄資訊表格開始 -->
 		<div class="row">
+			<h3 class="form_title">房屋詳細資料</h3>
 			<table class="table table-hover">
-				<caption class="table_title">詳細資料</caption>
+				
 				<thead>
 				</thead>
 				<tbody>
@@ -337,8 +372,9 @@
 
 		<!-- 其中一欄資訊表格開始 -->
 		<div class="row">
+			<h3 class="form_title">建物登記坪數</h3>
 			<table class="table table-hover">
-				<caption class="table_title">詳細資料</caption>
+				
 				<thead>
 				</thead>
 				<tbody>
@@ -358,52 +394,185 @@
 
 		</div>
 		<!-- 其中一欄資訊表格結束 -->
-
 	</div>
 	<!-- 詳細資訊表單結束 -->
 
-	<!-- 換頁按鈕 -->
-	<div class="container">
-		<div class="row">
-			<ul class="pager">
-				<li><a href="#">至第一頁</a></li>
-				<li><a href="#">上一頁</a></li>
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li><a href="#">6</a></li>
-				<li><a href="#">7</a></li>
-				<li><a href="#">8</a></li>
-				<li><a href="#">9</a></li>
-				<li><a href="#">10</a></li>
-				<li><a href="#">下一頁</a></li>
-				<li><a href="#">至最後一頁</a></li>
-			</ul>
+	<!-- GOOGLE MAP開始 -->
+	<div class="container mb10">
+		<div class="row">			
+			<h3 class="form_title">周邊機能地圖</h3>
+			<div id="map"></div>		
 		</div>
 	</div>
 	
-	<!-- 廣告區塊 -->
-	<div id="abgne_float_ad">
-		<button type="button" class="ad_btn btn btn-default" data-toggle="tooltip" data-placement="left" title="提示文字111">
-			按鈕1
-		</button><br>
-		<button type="button" class="ad_btn btn btn-default" data-toggle="tooltip" data-placement="left" title="提示文字222">
-			按鈕2
-		</button><br>
-		<button type="button" class="ad_btn btn btn-default" data-toggle="tooltip" data-placement="left" title="提示文字333">
-			按鈕3			
-		</button>	
-	</div>
-	<!-- 廣告區塊結束 -->
-
-
-
-	<!-- 以下是所有的JAVASCRIPT -->
-	<script src="https://code.jquery.com/jquery.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>	
 	<script>
+		function initMap() {
+			var uluru = {lat: -25.363, lng: 131.044};
+			var map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 4,
+				center: uluru
+			});
+			var marker = new google.maps.Marker({
+				position: uluru,
+				map: map
+			});
+		}
+	</script>
+	<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATnJXHEYAz4_W9Aoy_T2y6wdRNdKy3r6g&callback=initMap">
+</script>
+
+<!-- GOOGLE MAP結束 -->
+
+<!-- 推薦物件區塊開始 -->
+<div class="container">	
+	<div class="row">
+		<h3 class="form_title">熱門物件推薦</h3>
+
+		<!-- 一格介紹區塊開始 -->
+		<div class="col-xs-12 col-sm-4 rec_item pd20">
+			<div class="row">
+				<img class="rechouse_Img" src="imgs/rechouse1.jpeg">
+			</div>
+
+			<div class="row">				
+				<div class="col-xs-12 col-sm-8">
+					<h4>
+						我是推薦物件的標題
+					</h4>
+				</div>
+				<div class="col-xs-12 col-sm-4 rec_price">
+					<h4>
+						1300萬
+					</h4>
+				</div>
+			</div>
+			
+			<div class="rec_content">台北市內湖區新明路</div>
+			<div class="rec_type sameRow">
+				電梯大樓
+			</div> 
+			<div class="rec_pattern sameRow">
+				3房(室)2廳2衛
+			</div>
+			<div class="rec_age sameRow">
+				15年
+			</div>			
+		</div>
+		<!-- 一格介紹區塊結束 -->
+		<!-- 一格介紹區塊開始 -->
+		<div class="col-xs-12 col-sm-4 rec_item pd20">
+			<div class="row">
+				<img class="rechouse_Img" src="imgs/rechouse2.jpeg">
+			</div>
+
+			<div class="row">				
+				<div class="col-xs-12 col-sm-8">
+					<h4>
+						我是推薦物件的標題
+					</h4>
+				</div>
+				<div class="col-xs-12 col-sm-4 rec_price">
+					<h4>
+						1300萬
+					</h4>
+				</div>
+			</div>
+			
+			<div class="rec_content">台北市內湖區新明路</div>
+			<div class="rec_type sameRow">
+				電梯大樓
+			</div> 
+			<div class="rec_pattern sameRow">
+				3房(室)2廳2衛
+			</div>
+			<div class="rec_age sameRow">
+				15年
+			</div>			
+		</div>
+		<!-- 一格介紹區塊結束 -->
+		<!-- 一格介紹區塊開始 -->
+		<div class="col-xs-12 col-sm-4 rec_item pd20">
+			<div class="row">
+				<img class="rechouse_Img" src="imgs/rechouse3.jpeg">
+			</div>
+
+			<div class="row">				
+				<div class="col-xs-12 col-sm-8">
+					<h4>
+						我是推薦物件的標題
+					</h4>
+				</div>
+				<div class="col-xs-12 col-sm-4 rec_price">
+					<h4>
+						1300萬
+					</h4>
+				</div>
+			</div>
+			
+			<div class="rec_content">台北市內湖區新明路</div>
+			<div class="rec_type sameRow">
+				電梯大樓
+			</div> 
+			<div class="rec_pattern sameRow">
+				3房(室)2廳2衛
+			</div>
+			<div class="rec_age sameRow">
+				15年
+			</div>			
+		</div>
+		<!-- 一格介紹區塊結束 -->
+		
+	</div>
+</div>
+
+
+
+<!-- 推薦物件區塊結束 -->
+
+
+
+<!-- 換頁按鈕 -->
+<div class="container">
+	<div class="row">
+		<ul class="pager">
+			<li><a href="#">至第一頁</a></li>
+			<li><a href="#">上一頁</a></li>
+			<li><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li><a href="#">6</a></li>
+			<li><a href="#">7</a></li>
+			<li><a href="#">8</a></li>
+			<li><a href="#">9</a></li>
+			<li><a href="#">10</a></li>
+			<li><a href="#">下一頁</a></li>
+			<li><a href="#">至最後一頁</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- 廣告區塊 -->
+<div id="abgne_float_ad">
+	<button type="button" class="ad_btn btn btn-default" data-toggle="tooltip" data-placement="left" title="提示文字111">
+		按鈕1
+	</button><br>
+	<button type="button" class="ad_btn btn btn-default" data-toggle="tooltip" data-placement="left" title="提示文字222">
+		按鈕2
+	</button><br>
+	<button type="button" class="ad_btn btn btn-default" data-toggle="tooltip" data-placement="left" title="提示文字333">
+		按鈕3			
+	</button>	
+</div>
+<!-- 廣告區塊結束 -->
+
+
+<!-- 以下是所有的JAVASCRIPT -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>	
+<script>
 	// 1.tooltip的javascript開始
 	$(function(){
 		$('[data-toggle="tooltip"]').tooltip();
@@ -416,7 +585,7 @@
 		var $win = $(window),
 		$ad = $('#abgne_float_ad').css('opacity', 0).show(),	// 讓廣告區塊變透明且顯示出來
 		_width = $ad.width(),
-		_height = $ad.height()+400,
+		_height = $ad.height()*4,
 		_diffY = 20, _diffX = 20,	// 距離右及下方邊距
 		_moveSpeed = 1000;	// 移動的速度
 
