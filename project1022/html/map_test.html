@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>Title Page</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		<!--[if lt IE 9]>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+			<![endif]-->
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+			<style type="text/css">
+				#map {
+					height: 430px;
+					position: relative;
+					width: 100%;
+					margin: auto;
+					border-radius: 0.4rem; 
+				}
+				#map-wrapper{
+					border: 0.1rem solid #e5e5e5;
+					padding: 2rem;
+					border-radius: 0.4rem; 
+					width:60%;
+					margin:auto;
+					margin-top:2em;
+				}
+				.maps-frame {
+					height: 430px;
+					width: 100%;
+				}
+			</style>
+		</head>
+		<body>
+
+			<div id="map-wrapper">
+				<div class="input-group">
+					<input type="text" class="form-control" id="search-food" placeholder="Life is an adventure..">
+					<span class="input-group-btn">
+
+						<button class="btn btn-warning btn-secondary" type="button" onclick="performSearch();">Go!</button>
+					</span>
+				</div>
+				<div id="map">
+				</div>
+			</div>    
+
+			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATnJXHEYAz4_W9Aoy_T2y6wdRNdKy3r6g&callback=initMapCustom"></script>
+			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATnJXHEYAz4_W9Aoy_T2y6wdRNdKy3r6g&libraries=places"></script>
+
+			<script src="https://code.jquery.com/jquery.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+			<script type="text/javascript">
+
+				function initMapCustom() {
+					window.navigator.geolocation.getCurrentPosition(function (pos) {
+						var current_pos = {lat: pos.coords.latitude,lng: pos.coords.longitude};
+						console.log(current_pos);
+						var map = new google.maps.Map(document.getElementById('map'),{zoom: 15,center: current_pos});
+						var marker = new google.maps.Marker({position: current_pos,map: map});
+					});
+				}
+
+				function performSearch(){
+					var searchText = document.getElementById("search-food").value;
+
+					var request = {
+						location: current_pos,
+						radius: 3000,
+						types: ['food'],
+						name:searchText,
+					};
+					service = new google.maps.places.PlacesService(map);
+					service.nearbySearch(request, searchCallback);
+				}
+
+				var search_markers = [];
+
+// 將marker設定到地圖上
+function searchCallback(results, status) {
+
+  // 每次search前就把地圖上marker清空(把marker的map資料設成null)
+  for(var i = 0; i < search_markers.length; i++) {
+  	search_markers[i].setMap(null);
+  }
+  // 都清完了, 就設定成空陣列
+  search_markers = []; 
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+  	for (var i = 0; i < results.length; i++) {
+  		var place = results[i];
+           // 把google原本就放在result的icon拿出來
+           var image = {
+           	url: place.icon,
+           	size: new google.maps.Size(71, 71),
+           	origin: new google.maps.Point(0, 0),
+           	anchor: new google.maps.Point(17, 34),
+           	scaledSize: new google.maps.Size(25, 25)
+           };
+           search_markers.push(new google.maps.Marker({
+           	map: map,
+           	icon:image,
+           	position: place.geometry.location,
+           	title: place.name,
+           }));
+           console.log(place);
+       }
+
+   }
+}
+</script>
+</body>
+</html>
