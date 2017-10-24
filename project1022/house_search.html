@@ -112,12 +112,22 @@
 			height:60px;
 		}
 		/*廣告CSS結束*/
-
+		div.backgroundpng {
+			position: fixed;
+			top: 0;
+			z-index: -15;
+		}
+		.backgroundpng img{
+			width: 115%;
+			opacity: 0.9;
+		}
 
 	</style>
 </head>
-<body background="imgs/sinyi_bg.png">
-
+<body>
+	<div class="backgroundpng">
+		<img class="backgroundpng" src="imgs/sinyi_bg.png">
+	</div>
 
 	<!-- nav bar -->
 	<nav class="navbar navbar-default nav-color navbar-fixed-top" role="navigation">
