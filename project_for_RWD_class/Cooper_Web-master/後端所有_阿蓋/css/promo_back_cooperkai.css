@@ -1,0 +1,54 @@
+.table_main {
+				border: 2px solid #5A5AAD;
+
+			}
+
+			.promo_top{
+				margin-top: 1em;
+			}
+
+			/*大促銷標題*/
+			.title_pr {
+				color: blue;
+				font-weight: bold;
+				font-size: xx-large;
+				font-family:Microsoft JhengHei;
+			}
+
+			/*欄未標題*/
+			.col_title {
+				background-color: #00BFFF;
+				font-weight: bold;
+				font-size: 20px;
+				font-family:Microsoft JhengHei;
+			}
+
+			/*欄位內容*/
+			.col_name {
+				font-weight: bold;
+				font-size: 16px;
+				font-family:Microsoft JhengHei;
+			}
+
+			/*彈窗位置*/
+			.modal_jump {
+				float:right;
+			}
+
+			/*彈窗標題*/
+			.modal-title {
+				color: blue;
+				font-weight: bold;
+				font-size: x-large;
+				font-family:Microsoft JhengHei;
+			}
+			.modal-body {
+				color: blue;
+				font-weight: bold;
+				font-size: medium;
+				font-family:Microsoft JhengHei;
+			}
+
+			.date_size{
+				width: 100%;
+			}
