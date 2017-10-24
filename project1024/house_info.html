@@ -4,13 +4,19 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<link rel="shortcut icon" href="imgs/Houselogo1.png" />
 	<title>好事多_房屋瀏覽</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">	
 	<style type="text/css">
+
+
 		/*強迫限制大小*/
-		.container{
+		.limited{
 			width: 64.3em;
 		}
+		
+
+
 		/*水平置中*/
 		.vertical-horizontal::before{
 			content:'';
@@ -21,6 +27,7 @@
 			vertical-align:middle;
 			background:#f00;
 		}	
+		
 		/*hr美化*/
 		hr {
 			height: 2px;
@@ -81,7 +88,6 @@
 			font-family:Microsoft JhengHei;
 			font-size: 1.2em
 		}
-
 		/*細節表單*/
 		.detail-total-form{
 			/*border: solid 1px #dddddd;*/
@@ -128,13 +134,16 @@
 		.rec_item{
 			background-color: white
 		}
+		.rec_item *{
+			color: black
+		}
 		/*推薦物件的圖片*/
 		.rechouse_Img{
 			width: 100%;
 			height: 210px			
 		}
 		/*推薦物件的標題*/
-		.rec_price{
+		.rec_price h4{
 			color:red;			
 		}		
 		.mb10{
@@ -146,66 +155,181 @@
 		.pd20{
 			padding: 20px;
 		}
+		div.backgroundpng {
+			position: fixed;
+			top: 0;
+			z-index: -15;
+		}
+		.backgroundpng img{
+			width: 115%;
+			opacity: 0.9;
+		}
+
+
+
+
+
+		body {
+			font-family: Arial, Verdana, Helvetica, "LiHei Pro Medium", 微軟正黑體, sans-serif;
+
+		}
+		.navbar{
+			background-color: #ffffff;
+			margin-bottom: 0;
+			border-radius: 0;
+			height: 80px;
+			box-shadow: 0px 2px 1px #bdbdbd;
+		}
+		.navshadow{
+			box-shadow: 0px 2px 1px #bdbdbd;
+		}
+
+		.activebar>li>a{
+			background-color: #ffffff;
+			font-size: 22px;
+			padding-top: 30px;
+			padding-bottom:0px;
+			height: 80px;
+		}
+		.logina>li>a{
+			background-color: #ffffff;
+			padding-top: 2em;
+			padding-bottom:0px;
+			height: 80px;
+		}
+		.backgroundpng {
+			position: fixed;
+			top: 0;
+			z-index: -15;
+		}
+		.backgroundpng img{
+			width: 115%;
+			opacity: 0.9;
+		}
+		.form-control {
+			height: 38.4px;
+			border-radius: 0px;
+		}
+		.searchbar {
+			position: absolute;
+			top: 21em;
+		}
+		.search-filter{
+			height: 38.4px;
+			text-align: center;
+			border: none;
+			font-size: 20px;
+		}
+		.search-form-btn {
+			color: #fff;
+			background: #231f20;
+			border: none;
+			height: 38.4px;
+			border-radius: 0 3px 3px 0;
+			width: calc(60px);
+		}
+
+		.navbar-brand {
+			z-index: 20;
+		}
+
+		.navbar-brand img {
+			background-color: #FFF;
+			border-radius: 15px;
+		}
+		.tooltip-inner{
+			font-size: 22px;
+			background-color: #fff;
+			border-radius: 0px;
+		}
+
+		.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+			padding-top: 0.7em;
+		}
+
+		a {
+			color: #00ADEE;
+		}
+
+		a:hover{
+			text-decoration-line: none;
+		}
+		a:active {
+			　text-decoration-line: none;
+		}
+		a:visited{
+			text-decoration-line: none;
+		}
+		
+		footer {
+			
+			font-weight: 700;
+			background-color: white;
+			position:absolute;
+			width:100%;
+			padding: 25px;
+			padding-top: 4em;
+		}
+
+		.copyri {
+			margin-top: 3em;
+		}
+
+		nav *{
+			font-weight: bold;
+		}
+
+
+		.unlimited{
+			width: 69%;		
+		}
+
+		
 
 
 	</style>
 </head>
-<body background="imgs/sinyi_bg.png">
+<body>
+	<div class="backgroundpng">
+		<img class="backgroundpng" src="imgs/sinyi_bg.png">
+	</div>
 
+	<div style="height: 50px">
+		
+
+	</div>
 
 
 	<!-- nav bar -->
-	<nav class="navbar navbar-default nav-color navbar-fixed-top" role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-					<span class="sr-only">選單切換</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">CSS可樂</a>
+	<div class="main">
+		<nav class="navbar navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header col-xs-12 col-sm-2">
+					<a class="navbar-brand " href="#"><img class="navshadow" src="imgs/For House logo.png" width="120px"></a>
+				</div>
+				<div class="col-xs-12 col-sm-8 ">
+					<ul class="nav navbar-nav activebar">
+						<li><a href="#" data-toggle="tooltipNews" data-placement="bottom" >最新消息</a></li>
+						<li><a href="#">常見問題</a></li>
+						<li><a href="#">看房去</a></li>
+						<li><a href="#">找房仲</a></li>
+						<li><a href="#">安家商城</a></li>
+						<li><a href="#">加入我們</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-2">
+					<ul class="nav navbar-nav logina">
+						<li><a href="#"><span class="glyphicon glyphicon-user"></span> 註冊</a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 登入</a></li>
+					</ul>
+				</div>
 			</div>
-
-			<!-- 手機隱藏選單區 -->
-			<div class="collapse navbar-collapse navbar-ex1-collapse">
-				<!-- 左選單 -->
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">關於CSS可樂</a></li>
-					<li><a href="#">CSS教學</a></li>
-					<li><a href="#">CSS範例</a></li>
-					<li><a href="#">原創CSS</a></li>
-				</ul>
-
-				<!-- 搜尋表單 -->
-		<!-- 		<form class="navbar-form navbar-right" role="search">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="請輸入關鍵字">
-					</div>
-					<button type="submit" class="btn follow_btn btn-default">搜尋</button>
-				</form> -->
-
-				<!-- 右選單 -->
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Amos 您好</a></li>
-					<li><a href="#">登出</a></li>
-					<li><a href="#">個人設定</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">繁體中文 <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">繁體中文</a></li>
-							<li><a href="#">English</a></li>
-							<li><a href="#">日本語</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+		</nav>
+	</div>
 	<!-- nav bar結束 -->
 
 	<!-- 麵包屑 -->
-	<div class="container">
+	<div class="limited container">
 		<div class="col-xs-12 col-sm-3"></div>
 		<ol class="breadcrumb">
 			<li>
@@ -221,7 +345,7 @@
 	</div>
 
 	<!-- 主區塊 -->
-	<div class="container main_block">
+	<div class="limited container main_block">
 		<div class="row">
 			<!-- 主區塊左側 -->
 			<div class="col-xs-12 col-sm-8">
@@ -325,7 +449,7 @@
 	<!-- 主區塊結束 -->
 
 	<!-- 分隔線 -->
-	<div class="container">
+	<div class="limited container">
 		<div class="row">
 			<hr>
 		</div>
@@ -334,7 +458,7 @@
 
 
 	<!-- 詳細資訊表單開始 -->
-	<div class="container detail-total-form">
+	<div class="limited container detail-total-form">
 		<!-- 詳細資訊表格左邊 -->
 		<!-- 其中一欄資訊表格開始 -->
 		<div class="row">
@@ -398,7 +522,7 @@
 	<!-- 詳細資訊表單結束 -->
 
 	<!-- GOOGLE MAP開始 -->
-	<div class="container mb10">
+	<div class="limited container mb10">
 		<div class="row">			
 			<h3 class="form_title">周邊機能地圖</h3>
 			<div id="map"></div>		
@@ -425,104 +549,110 @@
 <!-- GOOGLE MAP結束 -->
 
 <!-- 推薦物件區塊開始 -->
-<div class="container">	
+<div class="limited container">	
 	<div class="row">
 		<h3 class="form_title">熱門物件推薦</h3>
 
 		<!-- 一格介紹區塊開始 -->
-		<div class="col-xs-12 col-sm-4 rec_item pd20">
-			<div class="row">
-				<img class="rechouse_Img" src="imgs/rechouse1.jpeg">
-			</div>
+		<div class="col-xs-12 col-sm-4 rec_item pd20 ad_describe_block">
+			<a href="">
+				<div class="row">
+					<img class="rechouse_Img" src="imgs/rechouse1.jpeg">
+				</div>
 
-			<div class="row">				
-				<div class="col-xs-12 col-sm-8">
-					<h4>
-						我是推薦物件的標題
-					</h4>
+				<div class="row">				
+					<div class="col-xs-12 col-sm-8">
+						<h4>
+							我是推薦物件的標題
+						</h4>
+					</div>
+					<div class="col-xs-12 col-sm-4 rec_price">
+						<h4>
+							1300萬
+						</h4>
+					</div>
 				</div>
-				<div class="col-xs-12 col-sm-4 rec_price">
-					<h4>
-						1300萬
-					</h4>
+
+				<div class="rec_content">台北市內湖區新明路</div>
+				<div class="rec_type sameRow">
+					電梯大樓
+				</div> 
+				<div class="rec_pattern sameRow">
+					3房(室)2廳2衛
 				</div>
-			</div>
-			
-			<div class="rec_content">台北市內湖區新明路</div>
-			<div class="rec_type sameRow">
-				電梯大樓
-			</div> 
-			<div class="rec_pattern sameRow">
-				3房(室)2廳2衛
-			</div>
-			<div class="rec_age sameRow">
-				15年
-			</div>			
+				<div class="rec_age sameRow">
+					15年
+				</div>
+			</a>			
 		</div>
 		<!-- 一格介紹區塊結束 -->
 		<!-- 一格介紹區塊開始 -->
-		<div class="col-xs-12 col-sm-4 rec_item pd20">
-			<div class="row">
-				<img class="rechouse_Img" src="imgs/rechouse2.jpeg">
-			</div>
+		<div class="col-xs-12 col-sm-4 rec_item pd20 ad_describe_block">
+			<a href="#">
+				<div class="row">
+					<img class="rechouse_Img" src="imgs/rechouse2.jpeg">
+				</div>
 
-			<div class="row">				
-				<div class="col-xs-12 col-sm-8">
-					<h4>
-						我是推薦物件的標題
-					</h4>
+				<div class="row" >				
+					<div class="col-xs-12 col-sm-8">
+						<h4>
+							我是推薦物件的標題
+						</h4>
+					</div>
+					<div class="col-xs-12 col-sm-4 rec_price">
+						<h4>
+							1300萬
+						</h4>
+					</div>
 				</div>
-				<div class="col-xs-12 col-sm-4 rec_price">
-					<h4>
-						1300萬
-					</h4>
+
+				<div class="rec_content">台北市內湖區新明路</div>
+				<div class="rec_type sameRow">
+					電梯大樓
+				</div> 
+				<div class="rec_pattern sameRow">
+					3房(室)2廳2衛
 				</div>
-			</div>
-			
-			<div class="rec_content">台北市內湖區新明路</div>
-			<div class="rec_type sameRow">
-				電梯大樓
-			</div> 
-			<div class="rec_pattern sameRow">
-				3房(室)2廳2衛
-			</div>
-			<div class="rec_age sameRow">
-				15年
-			</div>			
+				<div class="rec_age sameRow">
+					15年
+				</div>	
+			</a>		
 		</div>
 		<!-- 一格介紹區塊結束 -->
 		<!-- 一格介紹區塊開始 -->
-		<div class="col-xs-12 col-sm-4 rec_item pd20">
-			<div class="row">
-				<img class="rechouse_Img" src="imgs/rechouse3.jpeg">
-			</div>
+		<div class="col-xs-12 col-sm-4 rec_item pd20 ad_describe_block">
+			<a href="#">
+				<div class="row">
+					<img class="rechouse_Img" src="imgs/rechouse3.jpeg">
+				</div>
 
-			<div class="row">				
-				<div class="col-xs-12 col-sm-8">
-					<h4>
-						我是推薦物件的標題
-					</h4>
+				<div class="row">				
+					<div class="col-xs-12 col-sm-8">
+						<h4>
+							我是推薦物件的標題
+						</h4>
+					</div>
+					<div class="col-xs-12 col-sm-4 rec_price">
+						<h4>
+							1300萬
+						</h4>
+					</div>
 				</div>
-				<div class="col-xs-12 col-sm-4 rec_price">
-					<h4>
-						1300萬
-					</h4>
+
+				<div class="rec_content">台北市內湖區新明路</div>
+				<div class="rec_type sameRow">
+					電梯大樓
+				</div> 
+				<div class="rec_pattern sameRow">
+					3房(室)2廳2衛
 				</div>
-			</div>
-			
-			<div class="rec_content">台北市內湖區新明路</div>
-			<div class="rec_type sameRow">
-				電梯大樓
-			</div> 
-			<div class="rec_pattern sameRow">
-				3房(室)2廳2衛
-			</div>
-			<div class="rec_age sameRow">
-				15年
-			</div>			
+				<div class="rec_age sameRow">
+					15年
+				</div>	
+			</a>		
 		</div>
 		<!-- 一格介紹區塊結束 -->
-		
+
 	</div>
 </div>
 
@@ -533,7 +663,7 @@
 
 
 <!-- 換頁按鈕 -->
-<div class="container">
+<div class="limited container">
 	<div class="row">
 		<ul class="pager">
 			<li><a href="#">至第一頁</a></li>
@@ -567,12 +697,36 @@
 	</button>	
 </div>
 <!-- 廣告區塊結束 -->
+<footer class="container-fluid">
+	<div class="container text-center">
+		<div class="col-xs-12 col-sm-2">
+			<a href="#">HOME</a>
+		</div>
+		<div class="col-xs-12 col-sm-2">
+			<a href="#">OUR TEAM</a>
+		</div>
+		<div class="col-xs-12 col-sm-2">
+			<a href="#">COMMUNITIES</a>
+		</div>
+		<div class="col-xs-12 col-sm-2">
+			<a href="#">COMMUNITIES</a>
+		</div>
+		<div class="col-xs-12 col-sm-2">
+			<a href="#">COMMUNITIES</a>
+		</div>
+		<div class="col-xs-12 col-sm-2">
+			<a href="#">CONTACT US</a>
+		</div></div>
+		<div class="copyri text-center">
+			<p><small>Copyright © 2017 For House</small></p>
+		</div>
+	</footer>
 
 
-<!-- 以下是所有的JAVASCRIPT -->
-<script src="https://code.jquery.com/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>	
-<script>
+	<!-- 以下是所有的JAVASCRIPT -->
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>	
+	<script>
 	// 1.tooltip的javascript開始
 	$(function(){
 		$('[data-toggle="tooltip"]').tooltip();

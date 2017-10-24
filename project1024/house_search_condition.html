@@ -4,12 +4,13 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<link rel="shortcut icon" href="imgs/Houselogo1.png" />
 	<title>好事多_房屋搜尋</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">	
 	<style type="text/css">
 
 		/* 強迫把網頁內容縮到這個大小 */
-		.container{
+		.limited{
 			width: 64.3em;
 		}
 		/* 搜尋輸入列 */
@@ -112,75 +113,179 @@
 			height:60px;
 		}
 		/*廣告CSS結束*/
+		div.backgroundpng {
+			position: fixed;
+			top: 0;
+			z-index: -15;
+		}
+		.backgroundpng img{
+			width: 115%;
+			opacity: 0.9;
+		}
+
+
+
+
+
+		body {
+			font-family: Arial, Verdana, Helvetica, "LiHei Pro Medium", 微軟正黑體, sans-serif;
+
+		}
+		.navbar{
+			background-color: #ffffff;
+			margin-bottom: 0;
+			border-radius: 0;
+			height: 80px;
+			box-shadow: 0px 2px 1px #bdbdbd;
+		}
+		.navshadow{
+			box-shadow: 0px 2px 1px #bdbdbd;
+		}
+
+		.activebar>li>a{
+			background-color: #ffffff;
+			font-size: 22px;
+			padding-top: 30px;
+			padding-bottom:0px;
+			height: 80px;
+		}
+		.logina>li>a{
+			background-color: #ffffff;
+			padding-top: 2em;
+			padding-bottom:0px;
+			height: 80px;
+		}
+		.backgroundpng {
+			position: fixed;
+			top: 0;
+			z-index: -15;
+		}
+		.backgroundpng img{
+			width: 115%;
+			opacity: 0.9;
+		}
+		.form-control {
+			height: 38.4px;
+			border-radius: 0px;
+		}
+
+		.search-filter{
+			height: 38.4px;
+			text-align: center;
+			border: none;
+			font-size: 20px;
+		}
+		.search-form-btn {
+			color: #fff;
+			background: #231f20;
+			border: none;
+			height: 38.4px;
+			border-radius: 0 3px 3px 0;
+			width: calc(60px);
+		}
+
+		.navbar-brand {
+			z-index: 20;
+		}
+
+		.navbar-brand img {
+			background-color: #FFF;
+			border-radius: 15px;
+		}
+		.tooltip-inner{
+			font-size: 22px;
+			background-color: #fff;
+			border-radius: 0px;
+		}
+
+		.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+			padding-top: 0.7em;
+		}
+
+		a {
+			color: #00ADEE;
+		}
+
+		a:hover{
+			text-decoration-line: none;
+		}
+		a:active {
+			　text-decoration-line: none;
+		}
+		a:visited{
+			text-decoration-line: none;
+		}
+		.main{
+			padding-bottom: 100px;
+		}
+		footer {
+			
+			font-weight: 700;
+			background-color: white;
+			position:absolute;
+			width:100%;
+			padding: 25px;
+			padding-top: 4em;
+		}
+
+		.copyri {
+			margin-top: 3em;
+		}
+
+		nav *{
+			font-weight: bold;
+		}
+
+
 
 
 	</style>
 </head>
-<body background="imgs/sinyi_bg.png">
-
+<body>
+	<div class="backgroundpng">
+		<img class="backgroundpng" src="imgs/sinyi_bg.png">
+	</div>
 
 	<!-- nav bar -->
-	<nav class="navbar navbar-default nav-color navbar-fixed-top" role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-					<span class="sr-only">選單切換</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">CSS可樂</a>
+	<div class="main">
+		<nav class="navbar navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header col-xs-12 col-sm-2">
+					<a class="navbar-brand " href="#"><img class="navshadow" src="imgs/For House logo.png" width="120px"></a>
+				</div>
+				<div class="col-xs-12 col-sm-8 ">
+					<ul class="nav navbar-nav activebar">
+						<li><a href="#" data-toggle="tooltipNews" data-placement="bottom" >最新消息</a></li>
+						<li><a href="#">常見問題</a></li>
+						<li><a href="#">看房去</a></li>
+						<li><a href="#">找房仲</a></li>
+						<li><a href="#">安家商城</a></li>
+						<li><a href="#">加入我們</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-2">
+					<ul class="nav navbar-nav logina">
+						<li><a href="#"><span class="glyphicon glyphicon-user"></span> 註冊</a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 登入</a></li>
+					</ul>
+				</div>
 			</div>
-
-			<!-- 手機隱藏選單區 -->
-			<div class="collapse navbar-collapse navbar-ex1-collapse">
-				<!-- 左選單 -->
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">關於CSS可樂</a></li>
-					<li><a href="#">CSS教學</a></li>
-					<li><a href="#">CSS範例</a></li>
-					<li><a href="#">原創CSS</a></li>
-				</ul>
-
-				<!-- 搜尋表單 -->
-		<!-- 		<form class="navbar-form navbar-right" role="search">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="請輸入關鍵字">
-					</div>
-					<button type="submit" class="btn follow_btn btn-default">搜尋</button>
-				</form> -->
-
-				<!-- 右選單 -->
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Amos 您好</a></li>
-					<li><a href="#">登出</a></li>
-					<li><a href="#">個人設定</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">繁體中文 <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">繁體中文</a></li>
-							<li><a href="#">English</a></li>
-							<li><a href="#">日本語</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+		</nav>
+	</div>
 	<!-- nav bar結束 -->
 
 
 	<!-- 麵包屑 -->
-	<div class="container">
+	<div class="container limited">
 		<div class="col-xs-12 col-sm-6">
 			<ol class="breadcrumb">
 				<li>
 					<a href="#">首頁</a>
 				</li>
 				<li>
-					<a href="#">最新消息</a>
+					<a href="#">房屋搜尋</a>
 				</li>
-				<li class="active">媽我上電視了</li>
+				<li class="active">條件搜尋</li>
 			</ol>
 		</div>
 		<div class="col-xs-12 col-sm-6"></div>
@@ -188,33 +293,60 @@
 	<!-- 麵包屑結束 -->
 
 	<!--Search Bar-->
-	<div class="container search_bar">
+	<div class="container limited search_bar">
 		<div class="row">
 			<div class="col-xs-12 col-sm-10 col-sm-offset-1" style="margin-bottom: 20px">
-				<form class="navbar-form navbar-left">
-					<button type="submit" class="btn btn-default">條件搜尋
-					</button>
-					<button type="submit" class="btn btn-default">地圖搜尋
-					</button>
-					<div class="row">
 
+				<div class="row">
+					<a href="house_search_condition.html" class="btn btn-default">條件搜尋</a>	
+					<a href="house_search_map.html" class="btn btn-default">地圖搜尋</a>
+				</div>
+				<div class="row">
 
-						<div class="col-xs-12 col-sm-12">
-							<div class="form-group">
-								<input type="text" class="search-text" placeholder="請輸入關鍵字">
+					<div class="searchbar">
+						<form class="search">
+							<div class="input-group">
+								<span class="input-group-btn">
+									<!-- <div class="dropdown"> -->
+									<a href="#" class="btn btn-info dropdown-toggle search-filter" data-toggle="dropdown">台北市 <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a href="#">松山區</a></li>
+										<li><a href="#">大安區</a></li>
+										<li><a href="#">中正區</a></li>
+										<li><a href="#">大同區</a></li>
+										<li><a href="#">中山區</a></li>
+										<li><a href="#">萬華區</a></li>
+										<li><a href="#">士林區</a></li>
+										<li><a href="#">北投區</a></li>
+										<li><a href="#">內湖區</a></li>
+										<li><a href="#">南港區</a></li>
+										<li><a href="#">文山區</a></li>
+										<li><a href="#">台灣大學</a></li>
+
+									</ul>
+									<!-- </div> -->
+								</span>
+
+								<input type="text" class="form-control" placeholder= "關鍵字、學校、街道">
+								<div class="input-group-btn">
+
+									<button class="btn btn-default search-form-btn" type="submit">
+										<!-- <span class="button-text ">找房子 </span> -->
+										<i class="glyphicon glyphicon-search"></i>
+									</button>
+								</div>
 							</div>
-							<button type="submit" class="glyphicon glyphicon-search btn btn-default">搜尋
-							</button>
-						</div>
+						</form>
+					</div>
 
+				</div>	
 
-					</div>	
-				</form>
 
 				<!--搜尋按鈕btn block	-->
-				<div class="row">
-					<div class="container btn-block">
+				<div class="row" style=" margin-top: 10px">
+					<div class="container limited btn-block">
 						<div class="col-xs-12 col-sm-12">
+							
 
 							<div class="btn-group">
 								<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -299,6 +431,7 @@
 									<a class="dropdown-item" href="#">500</a><br>
 								</div>	
 							</div>
+							
 						</div>
 					</div>
 				</div>
@@ -312,7 +445,7 @@
 
 
 	<!--共有房屋數&排序條件挑選-->
-	<div class="container vertical-horizontal">			
+	<div class="container limited vertical-horizontal">			
 		<div class="row">
 			<div class="col-xs-12 col-sm-2">
 				<div class="vertical-horizontal">共有16000間房屋
@@ -337,7 +470,7 @@
 
 
 	<!--這是物件列表總表-->
-	<div class="container item-list">
+	<div class="container limited item-list">
 		<!--這是物件列表裡其中一欄物件-->
 		<div class="row list-item">
 			<!-- 物件左邊區塊 -->
@@ -397,6 +530,129 @@
 			</div>
 		</div>
 		<!-- 一欄物件結束 -->
+		<!--這是物件列表裡其中一欄物件-->
+		<div class="row list-item">
+			<!-- 物件左邊區塊 -->
+			<div class="col-xs-12 col-sm-3">
+				<div class="row">
+					<a href="house_info.html">
+						<img src="imgs/house.jpg" >
+					</a>
+				</div>
+			</div>
+			<!-- 物件中間區塊 -->
+			<div class="col-xs-12 col-sm-7">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12">
+						<a href="house_info.html">
+							<h3 class="item-title">我是一間房子
+							</h3>
+						</a>
+						<h5 class="item-subtitle">風水佳位置好出門面山海回家櫃算盤	
+						</h5>			
+					</div>
+				</div>
+				<ul class="item-detail">
+					<li>透天</li>
+					<li>7.8年</li>
+					<li>2 ~ 2 / 14樓</li>
+					<li>土地 16.31坪</li>
+					<li>主+陽 37.51坪</li>
+					<li>建物 59.09坪</li>
+					<li>4房(室)2廳2衛</li>
+
+				</ul>
+			</div>
+
+			<!-- 物件右邊區塊 -->
+			<div class="col-xs-12 col-sm-2 row">
+
+				
+				<div class="col-xs-12 col-sm-12">
+					<div class="col-xs-12 col-sm-12 row">
+						<div class="item-price">1,300萬
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 row">
+						<button class="bigger check_btn btn dropdown-toggle" >
+							預約看屋
+						</button>
+					</div>
+
+					<div class="col-xs-12 col-sm-12">
+						<button class=" follow_btn btn dropdown-toggle" >
+							收藏房屋
+						</button>	
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<!-- 一欄物件結束 -->
+
+		<!--這是物件列表裡其中一欄物件-->
+		<div class="row list-item">
+			<!-- 物件左邊區塊 -->
+			<div class="col-xs-12 col-sm-3">
+				<div class="row">
+					<a href="house_info.html">
+						<img src="imgs/house.jpg" >
+					</a>
+				</div>
+			</div>
+			<!-- 物件中間區塊 -->
+			<div class="col-xs-12 col-sm-7">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12">
+						<a href="house_info.html">
+							<h3 class="item-title">我是一間房子
+							</h3>
+						</a>
+						<h5 class="item-subtitle">風水佳位置好出門面山海回家櫃算盤	
+						</h5>			
+					</div>
+				</div>
+				<ul class="item-detail">
+					<li>透天</li>
+					<li>7.8年</li>
+					<li>2 ~ 2 / 14樓</li>
+					<li>土地 16.31坪</li>
+					<li>主+陽 37.51坪</li>
+					<li>建物 59.09坪</li>
+					<li>4房(室)2廳2衛</li>
+
+				</ul>
+			</div>
+
+			<!-- 物件右邊區塊 -->
+			<div class="col-xs-12 col-sm-2 row">
+
+				
+				<div class="col-xs-12 col-sm-12">
+					<div class="col-xs-12 col-sm-12 row">
+						<div class="item-price">1,300萬
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 row">
+						<button class="bigger check_btn btn dropdown-toggle" >
+							預約看屋
+						</button>
+					</div>
+
+					<div class="col-xs-12 col-sm-12">
+						<button class=" follow_btn btn dropdown-toggle" >
+							收藏房屋
+						</button>	
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<!-- 一欄物件結束 -->
+
+
+
+
 		<div class="row list-item">
 			<!-- 物件左邊區塊 -->
 			<div class="col-xs-12 col-sm-3">
@@ -559,20 +815,45 @@
 	</div>
 	<!-- 廣告區塊結束 -->
 
+	<footer class="container-fluid">
+		<div class="container text-center">
+			<div class="col-xs-12 col-sm-2">
+				<a href="#">HOME</a>
+			</div>
+			<div class="col-xs-12 col-sm-2">
+				<a href="#">OUR TEAM</a>
+			</div>
+			<div class="col-xs-12 col-sm-2">
+				<a href="#">COMMUNITIES</a>
+			</div>
+			<div class="col-xs-12 col-sm-2">
+				<a href="#">COMMUNITIES</a>
+			</div>
+			<div class="col-xs-12 col-sm-2">
+				<a href="#">COMMUNITIES</a>
+			</div>
+			<div class="col-xs-12 col-sm-2">
+				<a href="#">CONTACT US</a>
+			</div></div>
+			<div class="copyri text-center">
+				<p><small>Copyright © 2017 For House</small></p>
+			</div>
+		</footer>
 
 
-	<script src="https://code.jquery.com/jquery.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-	<!-- tooltip -->
-	<script>
-		$(function(){
-			$('[data-toggle="tooltip"]').tooltip();
-		})
-	</script>
+		<script src="https://code.jquery.com/jquery.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-	<!-- 廣告SCRIPT -->
-	<script type="text/javascript">
+		<!-- tooltip -->
+		<script>
+			$(function(){
+				$('[data-toggle="tooltip"]').tooltip();
+			})
+		</script>
+
+		<!-- 廣告SCRIPT -->
+		<script type="text/javascript">
 // 當網頁載入完
 window.onload=function(){
 	var $win = $(window),
