@@ -1,0 +1,132 @@
+   .navbar{
+       background-color: #ffffff;
+       margin-bottom: 0;
+       border-radius: 0;
+       height: 80px;
+       box-shadow: 0px 2px 1px #bdbdbd;
+       /*border:1px solid #bdbdbd;*/
+   }
+   /* Add a gray background color and some padding to the footer */
+
+   /*.navbar .container {
+       height: 80px;
+   }*/
+    .navshadow{
+      box-shadow: 0px 2px 1px #bdbdbd;
+    }
+
+   .activebar>li>a{
+       background-color: #ffffff;
+       font-size: 22px;
+       padding-top: 30px;
+       padding-bottom:0px;
+       height: 80px;
+       /*box-shadow: 0px 1px 1px #bdbdbd;*/
+   }
+    .logina>li>a{
+      background-color: #ffffff;
+       padding-top: 2em;
+       padding-bottom:0px;
+       height: 80px;
+       /*box-shadow: 0px 1px 1px #bdbdbd;*/
+    }
+   footer {
+       background-color: #f2f2f2;
+       padding: 25px;
+   }
+
+   .carousel-inner img {
+       width: 100%;
+       /* Set width to 100% */
+       margin: auto;
+       min-height: 200px;
+   }
+
+   a {
+       color: #00ADEE;
+   }
+   /* Hide the carousel text when the screen is less than 600 pixels wide */
+  a:hover{
+    text-decoration-line: none;
+  }
+   .form-control {
+       height: 38.4px;
+       border-radius: 0px;
+   }
+
+   @media (max-width: 600px) {
+       .carousel-caption {
+           display: none;
+       }
+   }
+   /*div#myCarousel {
+    position:relative;
+}*/
+
+   .carousel-inner {
+       height: 600px;
+   }
+
+   div.searchbar {
+       position: absolute;
+       top: 21em;
+   }
+   /*div#container {
+    position:relative;
+}*/
+
+   div.backgroundpng {
+       position: fixed;
+       top: 0;
+       z-index: -15;
+   }
+  .backgroundpng img{
+    width: 115%;
+    opacity: 0.9;
+  }
+
+
+   .jumbotron {
+       background-color: rgba(0, 0, 0, 0);
+       margin-bottom: -48px;
+   }
+    .search-filter{
+      height: 38.4px;
+      text-align: center;
+      border: none;
+      font-size: 20px;
+    }
+   .search-form-btn {
+       color: #fff;
+       background: #231f20;
+       border: none;
+       height: 38.4px;
+      /* font-weight: 400;
+       line-height: 1;*/
+       border-radius: 0 3px 3px 0;
+      /* width: 20%;*/
+      width: calc(60px);
+       /*font-size: 22px;*/
+   }
+
+   .navbar-brand {
+       z-index: 20;
+   }
+
+   .navbar-brand img {
+       background-color: #FFF;
+       border-radius: 15px;
+   }
+   .tooltip-inner{
+    font-size: 22px;
+     background-color: #fff;
+     border-radius: 0px;
+   }
+   /*
+   .tooltip.bottom .tooltiparrow{
+    border-bottom-color: #ffd600;
+   }*/
+
+.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+    padding-top: 0.7em;
+}

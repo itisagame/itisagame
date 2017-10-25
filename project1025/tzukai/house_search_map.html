@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<link rel="shortcut icon" href="imgs/Houselogo1.png" />
+	<title>好事多_地圖搜尋</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">	
+	<style type="text/css">
+
+		/*強迫不換行*/
+		.sameRow{
+			display: inline
+		}
+
+		/* 強迫把網頁內容縮到這個大小 */
+		.limited{
+			width: 64.3em;
+		}
+		/* 搜尋輸入列 */
+		.search-text{
+			width: 610px
+		}
+		/* 預約房屋按鈕 */
+		.check_btn{
+			background-color: #0678c2;
+			color: white;
+			box-shadow: 2px 2px 2px gray;
+		}
+		/* 加入收藏按鈕 */
+		.follow_btn{
+			background-color: #f6bf02;
+			color: white;
+			box-shadow: 2px 2px 2px gray;
+		}
+		/* 篩選條件的按鈕 */
+		.btn-block button{
+			width: 80px;
+			zoom: 1.3;
+			box-shadow: 2px 2px 2px gray;
+		}
+		/* 下拉式選單按鈕的容器 */
+		.btn-group{
+			margin-left: 5px;
+		}
+		/* 下拉式按鈕跳出的清單 */
+		.dropdown-item{
+			font-weight: bolder;
+			font-family:Microsoft JhengHei;
+			font-size: 20px;
+			align-content: center;
+		}
+		/* 會讓物件置中 */
+		.vertical-horizontal::before{
+			content:'';
+			width:0;
+			height:100%;
+			display:inline-block;
+			position:relative;
+			vertical-align:middle;
+			background:#f00;
+		}
+		/* 每一個物件*/
+		.list-item{
+			box-shadow: 10px 10px 5px gray;
+			border: solid #dddddd 1px ;
+			background-color: #ffffff;
+			margin-top: 10px;
+			margin-bottom: 30px;
+			height: 170px;
+		}
+		/* 每一個物件的標題 */
+		.item-title{
+			margin-top: 4px;
+			color: blue;
+			font-weight: bolder;
+			font-family:Microsoft JhengHei;
+		}
+		/* 每一個物件的圖片 */
+		.list-item img{
+			min-height: 200px;
+			max-width: 200px;
+			min-height: 170px;
+			max-height: 170px
+		}
+		/* 每一個物件的價錢 */
+		.item-price{
+			margin-top: 10px;
+			margin-bottom: 5px;
+			color:red;
+			font-size:2.3em;
+			white-space:nowrap
+		}
+		/* 放大按鈕1.5倍 */
+		.bigger{
+			zoom: 1.5
+		}	
+		.item-subtitle{
+			color: #a1a1a1
+		}
+
+		.item-detail li{
+			width: 33.333333%;
+			float: left
+		}
+
+		/*廣告CSS*/
+		#abgne_float_ad {
+			display: none;
+			position: absolute;
+		}
+		#abgne_float_ad img {
+			border: none;
+		}
+		.ad_btn{
+			width:100px;
+			height:60px;
+		}
+		/*廣告CSS結束*/
+		div.backgroundpng {
+			position: fixed;
+			top: 0;
+			z-index: -15;
+		}
+		.backgroundpng img{
+			width: 115%;
+			opacity: 0.9;
+		}
+
+		/*小逵的CSS*/
+		body {
+			font-family: Arial, Verdana, Helvetica, "LiHei Pro Medium", 微軟正黑體, sans-serif;
+		}
+		.navbar{
+			background-color: #ffffff;
+			margin-bottom: 0;
+			border-radius: 0;
+			height: 80px;
+			box-shadow: 0px 2px 1px #bdbdbd;
+		}
+		.navshadow{
+			box-shadow: 0px 2px 1px #bdbdbd;
+		}
+
+		.activebar>li>a{
+			background-color: #ffffff;
+			font-size: 22px;
+			padding-top: 30px;
+			padding-bottom:0px;
+			height: 80px;
+		}
+		.logina>li>a{
+			background-color: #ffffff;
+			padding-top: 2em;
+			padding-bottom:0px;
+			height: 80px;
+		}
+		.backgroundpng {
+			position: fixed;
+			top: 0;
+			z-index: -15;
+		}
+		.backgroundpng img{
+			width: 115%;
+			opacity: 0.9;
+		}
+		.form-control {
+			height: 38.4px;
+			border-radius: 0px;
+		}
+
+		.search-filter{
+			height: 38.4px;
+			text-align: center;
+			border: none;
+			font-size: 20px;
+		}
+		.search-form-btn {
+			color: #fff;
+			background: #231f20;
+			border: none;
+			height: 38.4px;
+			border-radius: 0 3px 3px 0;
+			width: calc(60px);
+		}
+
+		.navbar-brand {
+			z-index: 20;
+		}
+
+		.navbar-brand img {
+			background-color: #FFF;
+			border-radius: 15px;
+		}
+		.tooltip-inner{
+			font-size: 22px;
+			background-color: #fff;
+			border-radius: 0px;
+		}
+
+		.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+			padding-top: 0.7em;
+		}
+
+		a {
+			color: #00ADEE;
+		}
+
+		a:hover{
+			text-decoration-line: none;
+		}
+		a:active {
+			　text-decoration-line: none;
+		}
+		a:visited{
+			text-decoration-line: none;
+		}
+		.main{
+			padding-bottom: 100px;
+		}
+		footer {
+			
+			font-weight: 700;
+			background-color: white;
+			position:absolute;
+			width:100%;
+			padding: 25px;
+			padding-top: 4em;
+		}
+
+		.copyri {
+			margin-top: 3em;
+		}
+
+		nav *{
+			font-weight: bold;
+		}
+
+		#map {
+			height:750px;
+			width: 100%;
+			z-index: 2
+		}
+
+		.scroll-bar>div{
+			height:725px;
+			width:100%;
+			overflow:hidden;
+			overflow-y:scroll;
+		}
+
+		.scroll-bar-img{
+			height: 150px;
+			width: 100%;
+		}
+
+		.scroll-bar-price{
+			color: red;
+			float: right;
+			font-size: 1.5em
+		}
+		.scroll-bar-price-count{			
+			float: right
+		}
+
+		.scroll-bar-title{
+			color: #067bc1;
+			font-size: 1.2em
+		}
+
+		.scroll-item{
+			border: solid 1px #dddddd;
+			background-color:white;
+		}
+		.scroll-item-datail{
+			height: 150px;
+			border: solid 1px #dddddd;
+			background-color:white;			
+		}
+
+		.scroll-head{
+			border:solid 1px #bbbbbb;
+			height: 2em;
+			
+		}
+		.scroll-head div{
+			vertical-align: middle;
+		}
+
+
+
+
+
+	</style>
+</head>
+<body>
+	<div class="backgroundpng">
+		<img class="backgroundpng" src="imgs/sinyi_bg.png">
+	</div>
+
+	<!-- nav bar -->
+	<div class="main">
+		<nav class="navbar navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header col-xs-12 col-sm-2">
+					     <a class="navbar-brand " href="C:/project/MyFirstProject-master/1021/Homepage1015.html"><img class="navshadow" src="C:/project/tzukai/imgs/For House logo.png" width="120px"></a>
+				</div>
+				<div class="col-xs-12 col-sm-8 ">
+					<ul class="nav navbar-nav activebar">
+						<li><a href="C:/project/MyFirstProject-master/1021/Homepage1015.html">首頁</a></li>
+						<li><a href="#" data-toggle="tooltipNews" data-placement="bottom" >最新消息</a></li>
+						<li><a href="C:/project/Cooper_Web-master/常見問題_前端_阿蓋/qafront_correct.html">常見問題</a></li>
+						<li><a href="C:/project/tzukai/house_search_condition.html">看房去</a></li>
+						<li><a href="C:/project/Cooper_Web-master/搜尋房仲_前端_阿蓋/estate_searchfront_correct.html">找房仲</a></li>
+						<li><a href="#">安家商城</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-2">
+					<ul class="nav navbar-nav logina">
+						<li><a href='#registerForm' data-toggle="modal"><span class="glyphicon glyphicon-user"></span> 註冊</a></li>
+						<li><a href='#loginForm' data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span> 登入</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
+	<!-- nav bar結束 -->
+
+
+	<!-- 麵包屑 -->
+	<div class="container limited">
+		<div class="col-xs-12 col-sm-4">
+			<ol class="breadcrumb">
+				<li>
+					<a href="#">首頁</a>
+				</li>
+				<li>
+					<a href="#">房屋搜尋</a>
+				</li>
+				<li class="active">地圖搜尋</li>
+			</ol>
+		</div>
+
+
+
+
+
+		<div class="col-xs-12 col-sm-4">
+			<div class="row">
+				<a href="house_search_condition.html" class="btn btn-default">條件搜尋</a>	
+				<a href="house_search_map.html" class="btn btn-default">地圖搜尋</a>		
+			</div>			
+		</div>
+		<div class="col-xs-12 col-sm-4"></div>
+	</div>
+	<!-- 麵包屑結束 -->
+	<div class="row">
+
+
+
+		<!-- 左邊地圖區塊開始 -->
+		<div class="col-xs-12 col-sm-8">
+
+			<!-- GOOGLE MAP開始 -->
+			<div>
+				<div class="row">			
+
+					<div id="map"></div>		
+				</div>
+			</div>
+
+			<script>
+				function initMap() {
+					var uluru = {lat: -25.363, lng: 131.044};
+					var map = new google.maps.Map(document.getElementById('map'), {
+						zoom: 4,
+						center: uluru
+					});
+					var marker = new google.maps.Marker({
+						position: uluru,
+						map: map
+					});
+				}
+			</script>
+			<script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATnJXHEYAz4_W9Aoy_T2y6wdRNdKy3r6g&callback=initMap">
+		</script>
+
+		<!-- GOOGLE MAP結束 -->
+
+	</div>
+	<!-- 左邊地圖區塊結束 -->
+	<!-- 右邊物件區塊開始 -->
+	<div class="col-xs-12 col-sm-4 row">
+		
+		<!-- 區塊內標題列開始 -->
+		<div class="col-xs-12 col-sm-12 scroll-head vertical-horizontal">
+			<div class="col-xs-12 col-sm-6">
+				區域範圍內共有99間物件
+			</div>
+			<div class="col-xs-12 col-sm-6">
+				<form>
+					<select name="排序方式">
+						　<option value="price">價位低到高</option>
+						　<option value="pings">總坪數低到高</option>
+						　<option value="main_pings">主建坪低到高</option>
+						　<option value="land_pings">地坪低到高</option>
+						　<option value="age">屋齡低到高</option>　
+					</select>
+				</form>
+			</div>
+		</div>
+		<!-- 區塊內標題列結束 -->
+		<div class="col-xs-12 col-sm-12">
+			<div class="row">
+				<nav class="scroll-bar">
+					<div>
+						<!-- 一欄物件開始 -->
+						<div class="scroll-item">
+							<div class="col-xs-12 col-sm-4" >
+								<div class="row">
+									<a href="house_info.html">
+										<img src="imgs/house.jpg" class="scroll-bar-img">
+									</a>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-8 scroll-item-datail">
+								<div style="height:25px">
+									<a href="house_info.html">
+										<p class="sameRow scroll-bar-title">我是房屋標題</p>
+									</a>
+									<p class="sameRow scroll-bar-price"> 1300萬 </p>		
+								</div>		
+								<br>
+								<p>台北市中山區中山北路一段</p>	
+								<p>
+									<font>建物 29.06坪</font> 
+									<font>36.9年</font>
+									<font>5~5/5樓 </font>
+								</p>	
+								<font>3房(室)2廳2衛</font>
+								<button class="follow_btn main_block_detail btn  dropdown-toggle" style="float: right;margin-bottom: 1px" >
+									收藏房屋
+								</button>	
+							</div>	
+						</div>					
+						<!-- 一欄物件結束 -->
+						<!-- 一欄物件開始 -->
+						<div class="scroll-item">
+							<div class="col-xs-12 col-sm-4" >
+								<div class="row">
+									<a href="house_info.html">
+										<img src="imgs/house.jpg" class="scroll-bar-img">
+									</a>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-8 scroll-item-datail">
+								<div style="height:25px">
+									<a href="house_info.html">
+										<p class="sameRow scroll-bar-title">我是房屋標題</p>
+									</a>
+									<p class="sameRow scroll-bar-price"> 1300萬 </p>		
+								</div>		
+								<br>
+								<p>台北市中山區中山北路一段</p>	
+								<p>
+									<font>建物 29.06坪</font> 
+									<font>36.9年</font>
+									<font>5~5/5樓 </font>
+								</p>	
+								<font>3房(室)2廳2衛</font>
+								<button class="follow_btn main_block_detail btn  dropdown-toggle" style="float: right;margin-bottom: 1px" >
+									收藏房屋
+								</button>	
+							</div>	
+						</div>					
+						<!-- 一欄物件結束 -->
+						<!-- 一欄物件開始 -->
+						<div class="scroll-item">
+							<div class="col-xs-12 col-sm-4" >
+								<div class="row">
+									<a href="house_info.html">
+										<img src="imgs/house.jpg" class="scroll-bar-img">
+									</a>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-8 scroll-item-datail">
+								<div style="height:25px">
+									<a href="house_info.html">
+										<p class="sameRow scroll-bar-title">我是房屋標題</p>
+									</a>
+									<p class="sameRow scroll-bar-price"> 1300萬 </p>		
+								</div>		
+								<br>
+								<p>台北市中山區中山北路一段</p>	
+								<p>
+									<font>建物 29.06坪</font> 
+									<font>36.9年</font>
+									<font>5~5/5樓 </font>
+								</p>	
+								<font>3房(室)2廳2衛</font>
+								<button class="follow_btn main_block_detail btn  dropdown-toggle" style="float: right;margin-bottom: 1px" >
+									收藏房屋
+								</button>	
+							</div>	
+						</div>					
+						<!-- 一欄物件結束 -->
+						<!-- 一欄物件開始 -->
+						<div class="scroll-item">
+							<div class="col-xs-12 col-sm-4" >
+								<div class="row">
+									<a href="house_info.html">
+										<img src="imgs/house.jpg" class="scroll-bar-img">
+									</a>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-8 scroll-item-datail">
+								<div style="height:25px">
+									<a href="house_info.html">
+										<p class="sameRow scroll-bar-title">我是房屋標題</p>
+									</a>
+									<p class="sameRow scroll-bar-price"> 1300萬 </p>		
+								</div>		
+								<br>
+								<p>台北市中山區中山北路一段</p>	
+								<p>
+									<font>建物 29.06坪</font> 
+									<font>36.9年</font>
+									<font>5~5/5樓 </font>
+								</p>	
+								<font>3房(室)2廳2衛</font>
+								<button class="follow_btn main_block_detail btn  dropdown-toggle" style="float: right;margin-bottom: 1px" >
+									收藏房屋
+								</button>	
+							</div>	
+						</div>					
+						<!-- 一欄物件結束 -->
+						<!-- 一欄物件開始 -->
+						<div class="scroll-item">
+							<div class="col-xs-12 col-sm-4" >
+								<div class="row">
+									<a href="house_info.html">
+										<img src="imgs/house.jpg" class="scroll-bar-img">
+									</a>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-8 scroll-item-datail">
+								<div style="height:25px">
+									<a href="house_info.html">
+										<p class="sameRow scroll-bar-title">我是房屋標題</p>
+									</a>
+									<p class="sameRow scroll-bar-price"> 1300萬 </p>		
+								</div>		
+								<br>
+								<p>台北市中山區中山北路一段</p>	
+								<p>
+									<font>建物 29.06坪</font> 
+									<font>36.9年</font>
+									<font>5~5/5樓 </font>
+								</p>	
+								<font>3房(室)2廳2衛</font>
+								<button class="follow_btn main_block_detail btn  dropdown-toggle" style="float: right;margin-bottom: 1px" >
+									收藏房屋
+								</button>	
+							</div>	
+						</div>					
+						<!-- 一欄物件結束 -->
+						<!-- 一欄物件開始 -->
+						<div class="scroll-item">
+							<div class="col-xs-12 col-sm-4" >
+								<div class="row">
+									<a href="house_info.html">
+										<img src="imgs/house.jpg" class="scroll-bar-img">
+									</a>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-8 scroll-item-datail">
+								<div style="height:25px">
+									<a href="house_info.html">
+										<p class="sameRow scroll-bar-title">我是房屋標題</p>
+									</a>
+									<p class="sameRow scroll-bar-price"> 1300萬 </p>		
+								</div>		
+								<br>
+								<p>台北市中山區中山北路一段</p>	
+								<p>
+									<font>建物 29.06坪</font> 
+									<font>36.9年</font>
+									<font>5~5/5樓 </font>
+								</p>	
+								<font>3房(室)2廳2衛</font>
+								<button class="follow_btn main_block_detail btn  dropdown-toggle" style="float: right;margin-bottom: 1px" >
+									收藏房屋
+								</button>	
+							</div>	
+						</div>					
+						<!-- 一欄物件結束 -->
+						<!-- 一欄物件開始 -->
+						<div class="scroll-item">
+							<div class="col-xs-12 col-sm-4" >
+								<div class="row">
+									<a href="house_info.html">
+										<img src="imgs/house.jpg" class="scroll-bar-img">
+									</a>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-8 scroll-item-datail">
+								<div style="height:25px">
+									<a href="house_info.html">
+										<p class="sameRow scroll-bar-title">我是房屋標題</p>
+									</a>
+									<p class="sameRow scroll-bar-price"> 1300萬 </p>		
+								</div>		
+								<br>
+								<p>台北市中山區中山北路一段</p>	
+								<p>
+									<font>建物 29.06坪</font> 
+									<font>36.9年</font>
+									<font>5~5/5樓 </font>
+								</p>	
+								<font>3房(室)2廳2衛</font>
+								<button class="follow_btn main_block_detail btn  dropdown-toggle" style="float: right;margin-bottom: 1px" >
+									收藏房屋
+								</button>	
+							</div>	
+						</div>					
+						<!-- 一欄物件結束 -->
+						<!-- 一欄物件開始 -->
+						<div class="scroll-item">
+							<div class="col-xs-12 col-sm-4" >
+								<div class="row">
+									<a href="house_info.html">
+										<img src="imgs/house.jpg" class="scroll-bar-img">
+									</a>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-8 scroll-item-datail">
+								<div style="height:25px">
+									<a href="house_info.html">
+										<p class="sameRow scroll-bar-title">我是房屋標題</p>
+									</a>
+									<p class="sameRow scroll-bar-price"> 1300萬 </p>		
+								</div>		
+								<br>
+								<p>台北市中山區中山北路一段</p>	
+								<p>
+									<font>建物 29.06坪</font> 
+									<font>36.9年</font>
+									<font>5~5/5樓 </font>
+								</p>	
+								<font>3房(室)2廳2衛</font>
+								<button class="follow_btn main_block_detail btn  dropdown-toggle" style="float: right;margin-bottom: 1px" >
+									收藏房屋
+								</button>	
+							</div>	
+						</div>					
+						<!-- 一欄物件結束 -->
+						<!-- 一欄物件開始 -->
+						<div class="scroll-item">
+							<div class="col-xs-12 col-sm-4" >
+								<div class="row">
+									<a href="house_info.html">
+										<img src="imgs/house.jpg" class="scroll-bar-img">
+									</a>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-8 scroll-item-datail">
+								<div style="height:25px">
+									<a href="house_info.html">
+										<p class="sameRow scroll-bar-title">我是房屋標題</p>
+									</a>
+									<p class="sameRow scroll-bar-price"> 1300萬 </p>		
+								</div>		
+								<br>
+								<p>台北市中山區中山北路一段</p>	
+								<p>
+									<font>建物 29.06坪</font> 
+									<font>36.9年</font>
+									<font>5~5/5樓 </font>
+								</p>	
+								<font>3房(室)2廳2衛</font>
+								<button class="follow_btn main_block_detail btn  dropdown-toggle" style="float: right;margin-bottom: 1px" >
+									收藏房屋
+								</button>	
+							</div>	
+						</div>					
+						<!-- 一欄物件結束 -->
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+	<!-- 右邊物件區塊結束 -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- footer開始 -->
+<!-- 	<footer class="container-fluid">
+		<div class="container text-center">
+			<div class="col-xs-12 col-sm-2">
+				<a href="#">HOME</a>
+			</div>
+			<div class="col-xs-12 col-sm-2">
+				<a href="#">OUR TEAM</a>
+			</div>
+			<div class="col-xs-12 col-sm-2">
+				<a href="#">COMMUNITIES</a>
+			</div>
+			<div class="col-xs-12 col-sm-2">
+				<a href="#">COMMUNITIES</a>
+			</div>
+			<div class="col-xs-12 col-sm-2">
+				<a href="#">COMMUNITIES</a>
+			</div>
+			<div class="col-xs-12 col-sm-2">
+				<a href="#">CONTACT US</a>
+			</div></div>
+			<div class="copyri text-center">
+				<p><small>Copyright © 2017 For House</small></p>
+			</div>
+		</footer> -->
+		<!-- footer結束 -->
+
+		<!-- 燈箱內容開始 -->
+		<!-- 註冊燈箱 -->
+		<div class="modal fade" id="registerForm">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<a href='#loginForm' data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span> 登入</a>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="text-center"><label class="control-label">註冊會員</label></h4>
+					</div>
+					<form class="form-horizontal" action="" method="post">
+						<div class="input-group margin-top">
+							<input type="text" class="form-control" id="mem_mobile" name="mem_mobile" placeholder="手機號碼">
+							<span class="input-group-btn">
+								<button type="button" class="btn btn-default" id="send_code">發送驗證碼</button>
+							</span>
+						</div>
+						<div class="form-group margin-top">
+							<input type="text" class="form-control box-width" id="get_code" name="get_code" placeholder="輸入驗證碼">
+						</div>
+						<div class="form-group margin-top">
+							<input type="email" class="form-control box-width" id="mem_id" name="mem_id" placeholder="帳號(請輸入email)">
+						</div>
+						<div class="form-group margin-top">
+							<input type="password" class="form-control box-width" id="password1" name="Password" placeholder="密碼">
+						</div>
+						<div class="form-group margin-top">
+							<input type="password" class="form-control box-width" id="password2" placeholder="確認密碼">
+						</div>
+						<div class="form-group margin-top">
+							<input type="text" class="form-control box-width" id="mem_name" name="memName" placeholder="姓名">
+						</div>
+						<div class="form-group margin-top">
+							<input type="email" class="form-control box-width" id="mem_address" name="Address" placeholder="地址">
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-1 col-sm-11">
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" name="aggrement"> 若要繼續註冊，請先閱讀並同意好房事的服務條款 & 隱私權政策
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<button type="button" class="btn btn-primary btn-lg btn-block box-width">註冊</button>
+							<div class="col-sm-offset-10 col-sm-2">
+								<button type="button" class="btn btn-default btn-xs" id="magicBtn2">貼</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- 登入燈箱 -->
+		<div class="modal fade" id="loginForm">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">登入</h4>
+					</div>
+					<form class="form-horizontal" action="loginCheck.do" method="post">
+						<div class="form-group margin-top">
+							<input type="email" class="form-control box-width" id="loginid" name="ID" placeholder="帳號(請輸入email)">
+						</div>
+						<div class="form-group margin-top">
+							<input type="password" class="form-control box-width" id="password" name="Password" placeholder="密碼">
+						</div>
+						<div class="form-group">
+							<button type="button" class="btn btn-primary btn-lg btn-block box-width">登入</button>
+							<div class="col-sm-offset-10 col-sm-2">
+								<button type="button" class="btn btn-default btn-xs" id="magicBtn1">貼</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- 燈箱內容結束 -->
+		<script src="https://code.jquery.com/jquery.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</script>
+</body>
+</html>
