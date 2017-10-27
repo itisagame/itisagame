@@ -11,23 +11,23 @@ increment by 1
 minvalue 0
 nomaxvalue;
 
---create sequence imgs_sequance
---start with 1
---increment by 1
---minvalue 0
---nomaxvalue
-
 --create sequence houseimages_sequance
 --start with 1
 --increment by 1
 --minvalue 0
---nomaxvalue
+--nomaxvalue;
+
+--create sequence advertisment_sequance
+--start with 1
+--increment by 1
+--minvalue 0
+--nomaxvalue;
 
 --create sequence article_sequance
 --start with 1
 --increment by 1
 --minvalue 0
---nomaxvalue
+--nomaxvalue;
 
 --create sequence follow_RTR_sequance
 --start with 1
@@ -35,13 +35,6 @@ nomaxvalue;
 --minvalue 0
 --nomaxvalue
 
-
-CREATE TABLE HOUSEIMAGES(
-Img_No varchar2(100) not null primary key,
-House_No varchar2(100) not null,
-Img BLOB,
-CONSTRAINT Fk_HOUSEIMG_HOUSEINFO FOREIGN KEY (House_No) References HOUSEINFO (HOUSE_NO)
-);
 
 CREATE TABLE HouseInfo(
 House_No varchaR2(100) not null primary key,
@@ -72,6 +65,14 @@ final_update_time timestamp default current_timestamp
 --,
 --constraint FK_HOUSEINFO_REALESTATE foreign key(RE_NO) REFERENCES RealEstate(RE_NO),
 );
+
+CREATE TABLE HOUSEIMAGES(
+Img_No varchar2(100) not null primary key,
+House_No varchar2(100) not null,
+Img BLOB,
+CONSTRAINT Fk_HOUSEIMG_HOUSEINFO FOREIGN KEY (House_No) References HOUSEINFO (HOUSE_NO)
+);
+
 
 CREATE TABLE Advertisment(
 Ad_No VARCHAR2(100) primary key not null,
