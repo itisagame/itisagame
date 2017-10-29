@@ -4,36 +4,41 @@ drop table article;
 drop table Advertisment;
 drop table Follow_RTR_List;
 
+drop sequence house_sequence;
+drop sequence houseimages_sequence;
+drop sequence advertisment_sequance;
+drop sequence article_sequence;
+drop sequence follow_RTR_sequence;
 
-create sequence house_sequance
+create sequence house_sequence
 start with 1
 increment by 1
 minvalue 0
 nomaxvalue;
 
---create sequence houseimages_sequance
---start with 1
---increment by 1
---minvalue 0
---nomaxvalue;
+create sequence houseimages_sequence
+start with 1
+increment by 1
+minvalue 0
+nomaxvalue;
 
---create sequence advertisment_sequance
---start with 1
---increment by 1
---minvalue 0
---nomaxvalue;
+create sequence advertisment_sequance
+start with 1
+increment by 1
+minvalue 0
+nomaxvalue;
 
---create sequence article_sequance
---start with 1
---increment by 1
---minvalue 0
---nomaxvalue;
+create sequence article_sequence
+start with 1
+increment by 1
+minvalue 0
+nomaxvalue;
 
---create sequence follow_RTR_sequance
---start with 1
---increment by 1
---minvalue 0
---nomaxvalue
+create sequence follow_RTR_sequence
+start with 1
+increment by 1
+minvalue 0
+nomaxvalue;
 
 
 CREATE TABLE HouseInfo(
@@ -60,7 +65,7 @@ Main_Img BLOB,
 Lat number(10,5),
 Lng number(10,5),
 House_States varchar2(100),
-Insert_Time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+Insert_Time TIMESTAMP,
 final_update_time timestamp default current_timestamp
 --,
 --constraint FK_HOUSEINFO_REALESTATE foreign key(RE_NO) REFERENCES RealEstate(RE_NO),
@@ -98,12 +103,12 @@ ARTICLE_STATE VARCHAR2(30) NOT NULL
 --CONSTRAINT FK_ARTICLE_REALTOR FOREIGN KEY (REALTOR_NO) REFERENCES REALTOR(REALTOR_NO)
 );
 
-INSERT INTO HOUSEINFO (house_No,title,location,price,total_pings,main_pings,amenity_pings,accessory_pings,floor,age,pattern,orientation,building_materials,parking_space,classification_of_land,land_pings,data_info,main_img
-
---			,lat,lng,house_states,insert_time,final_update_time
-            )VALUES('hs000007','舊宗稀有景觀豪宅','台北市內湖區舊宗路','1,300',50.12,30.12,15.0,5.0,'8~8/12樓',29.5,'3房(室)1廳1衛','朝向南','鋼筋混凝土(RC)','坡道平面 固定車位','土地使用分區：第三種住宅區',6.02,null,null
---            ,'selling',current_timestamp,current_timestamp
-            );
-            
+--INSERT INTO HOUSEINFO (house_No,title,location,price,total_pings,main_pings,amenity_pings,accessory_pings,floor,age,pattern,orientation,building_materials,parking_space,classification_of_land,land_pings,data_info,main_img
+--
+----			,lat,lng,house_states,insert_time,final_update_time
+--            )VALUES('hs000007','舊宗稀有景觀豪宅','台北市內湖區舊宗路','1,300',50.12,30.12,15.0,5.0,'8~8/12樓',29.5,'3房(室)1廳1衛','朝向南','鋼筋混凝土(RC)','坡道平面 固定車位','土地使用分區：第三種住宅區',6.02,null,null
+----            ,'selling',current_timestamp,current_timestamp
+--            );
+--            
             
             
