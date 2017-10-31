@@ -1,14 +1,14 @@
-drop table houseimages;
 drop table houseinfo;
-drop table article;
-drop table Advertisment;
+drop table houseimages;
+drop table Advertisement;
 drop table Follow_RTR_List;
+--drop table article;
 
 drop sequence house_sequence;
 drop sequence houseimages_sequence;
-drop sequence advertisment_sequance;
-drop sequence article_sequence;
+drop sequence advertisement_sequance;
 drop sequence follow_RTR_sequence;
+--drop sequence article_sequence;
 
 create sequence house_sequence
 start with 1
@@ -22,17 +22,17 @@ increment by 1
 minvalue 0
 nomaxvalue;
 
-create sequence advertisment_sequance
+create sequence advertisement_sequance
 start with 1
 increment by 1
 minvalue 0
 nomaxvalue;
 
-create sequence article_sequence
-start with 1
-increment by 1
-minvalue 0
-nomaxvalue;
+--create sequence article_sequence
+--start with 1
+--increment by 1
+--minvalue 0
+--nomaxvalue;
 
 create sequence follow_RTR_sequence
 start with 1
@@ -75,40 +75,37 @@ CREATE TABLE HOUSEIMAGES(
 Img_No varchar2(100) not null primary key,
 House_No varchar2(100) not null,
 Img BLOB,
-CONSTRAINT Fk_HOUSEIMG_HOUSEINFO FOREIGN KEY (House_No) References HOUSEINFO (HOUSE_NO)
+state varchar2(50) not null,
+insert_time timestamp
+--,
+--CONSTRAINT Fk_HOUSEIMG_HOUSEINFO FOREIGN KEY (House_No) References HOUSEINFO (HOUSE_NO)
 );
 
 
-CREATE TABLE Advertisment(
+CREATE TABLE Advertisement(
 Ad_No VARCHAR2(100) primary key not null,
-PRD_NO_No number(10) not null,
-EMP_No number(10) not null,
+PRD_NO VARCHAR2(10) not null,
+EMP_No VARCHAR2(10),
 Ad_Type varchar2(100) not null,
-Appling_Date Date,
-Aduit_Date date,
-Expiration_Date DATE
+AD_IMG BLOB,
+Appling_Date Timestamp,
+Audit_Date Timestamp,
+Expiration_Date Timestamp
 --,
 --CONSTRAINT Fk_Advertisment_Product FOREIGN KEY (Product_No) References Product_No (Product_No),
 --CONSTRAINT Fk_Advertisment_Employee FOREIGN KEY (EMP_No) References Employee (EMP_No) 
 );
+ 
+--CREATE TABLE ARTICLE(
+--ARTICLE_NO VARCHAR2(100) PRIMARY KEY NOT NULL,
+--RTR_NO NUMBER(10) NOT NULL,
+--ARTICLE_BODY CLOB,
+--Post_Date TIMESTAMP NOT NULL,
+--UPDATE_DATE TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--ARTICLE_STATE VARCHAR2(30) NOT NULL
+----,
+----CONSTRAINT FK_ARTICLE_REALTOR FOREIGN KEY (REALTOR_NO) REFERENCES REALTOR(REALTOR_NO)
+--);
 
-CREATE TABLE ARTICLE(
-ARTICLE_NO VARCHAR2(10) PRIMARY KEY NOT NULL,
-RTR_NO NUMBER(10) NOT NULL,
-ARTICLE_BODY CLOB,
-Post_Date TIMESTAMP NOT NULL,
-UPDATE_DATE TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-ARTICLE_STATE VARCHAR2(30) NOT NULL
---,
---CONSTRAINT FK_ARTICLE_REALTOR FOREIGN KEY (REALTOR_NO) REFERENCES REALTOR(REALTOR_NO)
-);
 
---INSERT INTO HOUSEINFO (house_No,title,location,price,total_pings,main_pings,amenity_pings,accessory_pings,floor,age,pattern,orientation,building_materials,parking_space,classification_of_land,land_pings,data_info,main_img
---
-----			,lat,lng,house_states,insert_time,final_update_time
---            )VALUES('hs000007','舊宗稀有景觀豪宅','台北市內湖區舊宗路','1,300',50.12,30.12,15.0,5.0,'8~8/12樓',29.5,'3房(室)1廳1衛','朝向南','鋼筋混凝土(RC)','坡道平面 固定車位','土地使用分區：第三種住宅區',6.02,null,null
-----            ,'selling',current_timestamp,current_timestamp
---            );
---            
-            
             
