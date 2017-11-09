@@ -160,5 +160,10 @@ NOCACHE;
 
 select * from houseinfo where location like '%文山區%';
 
-select * from houseinfo where price > 5000;
+select * from houseinfo where price BETWEEN 2000 AND 4000 AND LOCATION LIKE '%中山區%' ORDER BY PRICE;
             
+SELECT * FROM HOUSEINFO ORDER BY PRICE;
+
+SELECT * FROM HOUSEINFO WHERE PATTERN NOT LIKE '%1房%' AND PATTERN NOT LIKE '%2房%' AND PATTERN NOT LIKE '%3房%' AND PATTERN NOT LIKE '%4房%' ORDER BY TOTAL_PINGS;
+
+select * from houseinfo where (house_Type like '%公寓%' or house_Type like '%大樓%' or house_Type like '%電梯%'  ) and(location like '%中山區%' or location like '%文山區%'  ) and(pattern like '%1房%' or pattern like '%2房%' or pattern like '%3房%' or pattern like '%4房%'  ) and(price BETWEEN 0 AND 9999  ) and(total_Pings BETWEEN 900 AND 1000 or total_Pings BETWEEN 0 AND 50  ) 
