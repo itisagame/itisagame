@@ -2,14 +2,12 @@ drop table houseinfo;
 drop table houseimages;
 drop table Advertisement;
 drop table Follow_RTR_List;
-DROP TABLE PRODUCT;
-DROP TABLE PRD_CATEGORY;
+--drop table article;
 
 drop sequence house_sequence;
 drop sequence houseimages_sequence;
 drop sequence advertisement_sequance;
-DROP SEQUENCE PD_SEQ;
-DROP SEQUENCE PRDT_CATE_SEQ;
+--drop sequence article_sequence;
 
 create sequence house_sequence
 start with 1
@@ -19,7 +17,7 @@ nomaxvalue;
 
 create sequence houseimages_sequence
 start with 1
-increment by 12 
+increment by 1
 minvalue 0
 nomaxvalue;
 
@@ -29,21 +27,21 @@ increment by 1
 minvalue 0
 nomaxvalue;
 
-CREATE SEQUENCE PD_SEQ
-INCREMENT BY 1 
-START WITH 1 
-NOCACHE;
+--create sequence article_sequence
+--start with 1
+--increment by 1
+--minvalue 0
+--nomaxvalue;
 
 
 
 CREATE TABLE HouseInfo(
 House_No varchaR2(100) not null primary key,
-RE_NO varchar2(100) not null,
+RE_NO varchar2(10) not null,
 HOUSE_Serial_number varchar2(100) not null,
 Title varchar2(100) not null,
 Location varchar2(100) not null,
-house_type varchar2(100) not null,
-Price number(10) not null,
+Price varchar2(100) not null,
 Total_Pings number(10,2) not null,
 Main_Pings number(10,2),
 Amenity_Pings number(10,2),
@@ -111,54 +109,4 @@ FOLLOW_DATE TIMESTAMP,
 CONSTRAINT PK_FOLLOW_RTR PRIMARY KEY(RTR_NO,MEM_NO)
 );
 
-
-
-
-CREATE TABLE PRODUCT (
-PRD_NO          VARCHAR2(10) NOT NULL,
-SLR_NO          VARCHAR2(10) NOT NULL,
-CATE_NO         VARCHAR2(10) NOT NULL,
-PRD_NAME        VARCHAR2(100) NOT NULL,
-PRD_DESC        CLOB,
-PRD_STOCK       NUMBER(6),
-PRD_PRICE       NUMBER(10) NOT NULL,
-PRD_STATE       VARCHAR2(10),
-CONSTRAINT PRD_PK PRIMARY KEY(PRD_NO)
---,
---CONSTRAINT PRD_SL_FK FOREIGN KEY(SLR_NO) REFERENCES SELLER(SLR_NO),
---CONSTRAINT PRD_CG_FK FOREIGN KEY(CATE_NO) REFERENCES PRD_CATEGORY(CATE_NO) 
-);
-
-CREATE TABLE PRDIMG (
-IMG_NO VARCHAR2(10) NOT NULL,
-PRD_NO VARCHAR2(10) NOT NULL,
-IMG BLOB,
-state varchar2(50) not null,
-insert_time timestamp,
-CONSTRAINT PRDIMG_PK PRIMARY KEY(IMG_NO)
---,
---CONSTRAINT PRDIMG_PD_FK FOREIGN KEY(PRD_NO) REFERENCES PRODUCT(PRD_NO) 
-);
-
-CREATE SEQUENCE PRDIMG_SEQ
-INCREMENT BY 1 
-START WITH 1 
-NOCACHE;
-
-DROP SEQUENCE PRDIMG_SEQ;
-DROP TABLE PRDIMG;
-
-CREATE TABLE PRD_CATEGORY (
-CATE_NO      VARCHAR2(10) NOT NULL,
-CATE_NAME    VARCHAR2(100) NOT NULL,
-CONSTRAINT PRDT_CATE_PK PRIMARY KEY(CATE_NO) );
-
-CREATE SEQUENCE PRDT_CATE_SEQ 
-INCREMENT BY 1 
-START WITH 1 
-NOCACHE;
-
-select * from houseinfo where location like '%文山區%';
-
-select * from houseinfo where price > 5000;
             

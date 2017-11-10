@@ -38,7 +38,7 @@ NOCACHE;
 
 CREATE TABLE HouseInfo(
 House_No varchaR2(100) not null primary key,
-RE_NO varchar2(100) not null,
+RE_NO varchar2(10) not null,
 HOUSE_Serial_number varchar2(100) not null,
 Title varchar2(100) not null,
 Location varchar2(100) not null,
@@ -158,7 +158,9 @@ INCREMENT BY 1
 START WITH 1 
 NOCACHE;
 
-select * from houseinfo where location like '%文山區%';
+INSERT INTO PRD_CATEGORY VALUES ('PC'||(LPAD(to_char(PRDT_CATE_SEQ.NEXTVAL),8,'0')),'獢?');
+INSERT INTO PRD_CATEGORY VALUES ('PC'||(LPAD(to_char(PRDT_CATE_SEQ.NEXTVAL),8,'0')),'璊?');
+INSERT INTO PRD_CATEGORY VALUES ('PC'||(LPAD(to_char(PRDT_CATE_SEQ.NEXTVAL),8,'0')),'瑹?');
 
-select * from houseinfo where price > 5000;
+
             

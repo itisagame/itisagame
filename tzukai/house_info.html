@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<link rel="shortcut icon" href="imgs/Houselogo1.png" />
+	<title>好事多_房屋瀏覽</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">	
+	<style type="text/css">
+
+
+		/*強迫限制大小*/
+		.limited{
+			width: 64.3em;
+		}
+		
+
+
+		/*水平置中*/
+		.vertical-horizontal::before{
+			content:'';
+			width:0;
+			height:100%;
+			display:inline-block;
+			position:relative;
+			vertical-align:middle;
+			background:#f00;
+		}	
+		
+		/*hr美化*/
+		hr {
+			height: 2px;
+			background-color:#555;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			width: 100%;
+		}
+		/*強迫不換行*/
+		.sameRow{
+			display: inline
+		}
+		/*預約看屋按鈕*/
+		.check_btn{
+			width: 100%;
+			background-color: #0678c2;
+			color: white;
+			box-shadow: 2px 2px 2px gray;
+		}
+		/*收藏房屋按鈕*/
+		.follow_btn{
+			width: 100%;
+			background-color: #F6BF02;
+			color: white;
+			box-shadow: 2px 2px 2px gray;
+		}
+		/*主區塊*/
+		.main_block{
+			background: #eeeeee;
+			border: solid 1px #dddddd;
+		}
+		/*主區塊圖片*/
+		.main_img{
+			min-width:600px;
+			max-width:600px;
+			min-height:400px;
+			max-height:400px;
+		}
+		/*主區塊標題*/
+		.info_title{
+			margin-top: 0;
+			font-size: 2em;
+			font-weight: bold;
+			font-family:Microsoft JhengHei;
+		}
+		/*主區塊價錢*/
+		.price_highlight{
+			color: red;
+			font-size: 2em;
+			font-weight: bold
+		}
+		/*主區塊小字區塊*/
+		.main_block_detail{
+			margin-top: 1em
+		}
+		/*主區塊的小字區塊的小字*/
+		.main_block_detail div{
+			font-family:Microsoft JhengHei;
+			font-size: 1.2em
+		}
+		/*細節表單*/
+		.detail-total-form{
+			/*border: solid 1px #dddddd;*/
+			background: #ffffff;			
+		}
+		/*細節表單每個td標籤*/
+		.detail-total-form td {			
+			height:3.5em
+		}
+		/*細節表單每個td標籤都垂直置中*/
+		.detail-total-form td::before{
+			content:'';
+			width:0;
+			height:100%;
+			display:inline-block;
+			position:relative;
+			vertical-align:middle;
+			background:#f00;
+		}	
+		/*主區塊外的標題*/
+		.form_title{
+			font-weight: bold;
+			font-size: 1.5em;
+			color:#f37748;
+		}
+		/*廣告CSS*/
+		#abgne_float_ad {
+			display: none;
+			position: absolute;
+		}
+		#abgne_float_ad img {
+			border: none;
+		}
+		.ad_btn{
+			width:100px;
+			height:60px;
+		}
+		/*廣告CSS結束*/
+		#map {
+			height: 400px;
+			width: 100%;
+		}
+		/*一欄推薦物件*/
+		.rec_item{
+			background-color: white
+		}
+		.rec_item *{
+			color: black
+		}
+		/*推薦物件的圖片*/
+		.rechouse_Img{
+			width: 100%;
+			height: 210px			
+		}
+		/*推薦物件的標題*/
+		.rec_price h4{
+			color:red;			
+		}		
+		.mb10{
+			margin-bottom: 20px
+		}
+		.w80{
+			width: 80%;
+		}
+		.pd20{
+			padding: 20px;
+		}
+		div.backgroundpng {
+			position: fixed;
+			top: 0;
+			z-index: -15;
+		}
+		.backgroundpng img{
+			width: 115%;
+			opacity: 0.9;
+		}
+
+
+
+
+
+		body {
+			font-family: Arial, Verdana, Helvetica, "LiHei Pro Medium", 微軟正黑體, sans-serif;
+
+		}
+		.navbar{
+			background-color: #ffffff;
+			margin-bottom: 0;
+			border-radius: 0;
+			height: 80px;
+			box-shadow: 0px 2px 1px #bdbdbd;
+		}
+		.navshadow{
+			box-shadow: 0px 2px 1px #bdbdbd;
+		}
+
+		.activebar>li>a{
+			background-color: #ffffff;
+			font-size: 22px;
+			padding-top: 30px;
+			padding-bottom:0px;
+			height: 80px;
+		}
+		.logina>li>a{
+			background-color: #ffffff;
+			padding-top: 2em;
+			padding-bottom:0px;
+			height: 80px;
+		}
+		.backgroundpng {
+			position: fixed;
+			top: 0;
+			z-index: -15;
+		}
+		.backgroundpng img{
+			width: 115%;
+			opacity: 0.9;
+		}
+		.form-control {
+			height: 38.4px;
+			border-radius: 0px;
+		}
+		.searchbar {
+			position: absolute;
+			top: 21em;
+		}
+		.search-filter{
+			height: 38.4px;
+			text-align: center;
+			border: none;
+			font-size: 20px;
+		}
+		.search-form-btn {
+			color: #fff;
+			background: #231f20;
+			border: none;
+			height: 38.4px;
+			border-radius: 0 3px 3px 0;
+			width: calc(60px);
+		}
+
+		.navbar-brand {
+			z-index: 20;
+		}
+
+		.navbar-brand img {
+			background-color: #FFF;
+			border-radius: 15px;
+		}
+		.tooltip-inner{
+			font-size: 22px;
+			background-color: #fff;
+			border-radius: 0px;
+		}
+
+		.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+			padding-top: 0.7em;
+		}
+
+		a {
+			color: #00ADEE;
+		}
+
+		a:hover{
+			text-decoration-line: none;
+		}
+		a:active {
+			　text-decoration-line: none;
+		}
+		a:visited{
+			text-decoration-line: none;
+		}
+		
+		footer {
+			
+			font-weight: 700;
+			background-color: white;
+			position:absolute;
+			width:100%;
+			padding: 25px;
+			padding-top: 4em;
+		}
+
+		.copyri {
+			margin-top: 3em;
+		}
+
+		nav *{
+			font-weight: bold;
+		}
+
+
+		.unlimited{
+			width: 69%;		
+		}
+
+		
+
+
+	</style>
+</head>
+<body>
+	<div class="backgroundpng">
+		<img class="backgroundpng" src="imgs/sinyi_bg.png">
+	</div>
+
+	<div style="height: 50px">
+		
+
+	</div>
+
+
+	<!-- nav bar -->
+	<div class="main">
+		<nav class="navbar navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header col-xs-12 col-sm-2">
+					<a class="navbar-brand " href="C:/project/MyFirstProject-master/1021/Homepage1015.html"><img class="navshadow" src="imgs/For House logo.png" width="120px"></a>
+				</div>
+				<div class="col-xs-12 col-sm-8 ">
+					<ul class="nav navbar-nav activebar">
+						<li><a href="C:/project/MyFirstProject-master/1021/Homepage1015.html">首頁</a></li>
+						<li><a href="#" data-toggle="tooltipNews" data-placement="bottom" >最新消息</a></li>
+						<li><a href="C:/project/Cooper_Web-master/常見問題_前端_阿蓋/qafront_correct.html">常見問題</a></li>
+						<li><a href="C:/project/tzukai/house_search_condition.html">看房去</a></li>
+						<li><a href="C:/project/Cooper_Web-master/搜尋房仲_前端_阿蓋/estate_searchfront_correct.html">找房仲</a></li>
+						<li><a href="#">安家商城</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-2">
+					<ul class="nav navbar-nav logina">
+						<li><a href='#registerForm' data-toggle="modal"><span class="glyphicon glyphicon-user"></span> 註冊</a></li>
+						<li><a href='#loginForm' data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span> 登入</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
+	<!-- nav bar結束 -->
+
+	<!-- 麵包屑 -->
+	<div class="limited container">
+		<div class="col-xs-12 col-sm-3"></div>
+		<ol class="breadcrumb">
+			<li>
+				<a href="#">首頁</a>
+			</li>
+			<li>
+				<a href="#">最新消息</a>
+			</li>
+			<li class="active">媽我上電視了</li>
+		</ol>
+		<div class="col-xs-12 col-sm-9">			
+		</div>
+	</div>
+
+	<!-- 主區塊 -->
+	<div class="limited container main_block">
+		<div class="row">
+			<!-- 主區塊左側 -->
+			<div class="col-xs-12 col-sm-8">
+				<div class="row">
+					<!-- 跑馬燈區塊開始 -->
+					<div id="myCarousel" class="carousel slide" data-ride="carousel">
+						<!-- Indicators -->
+						<ol class="carousel-indicators">
+							<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+							<li data-target="#myCarousel" data-slide-to="1"></li>
+							<li data-target="#myCarousel" data-slide-to="2"></li>
+							<li data-target="#myCarousel" data-slide-to="3"></li>
+						</ol>
+						<!-- Wrapper for slides -->
+						<div class="carousel-inner">
+							<div class="item main_img active">
+								<img src="imgs/livingRoom.jpg" alt="Los Angeles">
+							</div>
+							<div class="item main_img">
+								<img src="imgs/bedRoom.jpg" alt="Chicago">
+							</div>
+							<div class="item main_img">
+								<img src="imgs/kitchen.jpg" alt="Chicago">
+							</div>
+							<div class="item main_img">
+								<img src="imgs/house.jpg" alt="New York">
+							</div>
+						</div>
+
+						<!-- Left and right controls -->
+						<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+							<span class="glyphicon glyphicon-chevron-left"></span>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="right carousel-control" href="#myCarousel" data-slide="next">
+							<span class="glyphicon glyphicon-chevron-right"></span>
+							<span class="sr-only">Next</span>
+						</a>
+					</div>
+					<!-- 跑馬燈區塊結束 -->
+				</div>
+			</div>
+			<!-- 左側區塊結束 -->
+			<!-- 主區塊右側 -->
+			<div class="col-xs-12 col-sm-4">
+				<div class="col-sx-12 col-sm-12">
+					<!-- 標題 -->
+					<div class="row info_title">
+						<p>我是長長的很大很厲害的房屋標題</p>
+					</div>
+					<!-- 地區+編號+價錢 -->
+					<div class="row">
+						<div class="col-xs-12 col-sm-6">
+							<div class="row">
+								台北市萬華區<br>
+								永慶:2205089
+							</div>	
+						</div>
+						<div class="col-sx-12 col-sm-6">
+							<div class="row">
+								<p class="sameRow price_highlight">2,200
+								</p>
+								<p class="sameRow">萬
+								</p>
+							</div>
+						</div>
+					</div>
+					<!-- 主要區塊的細節們 -->
+					<div class="row main_block_detail">
+
+					</div>
+					<div class="row main_block_detail">
+						<div>格局:3房(室)2廳2衛</div>
+					</div>
+					<div class="row main_block_detail">
+						<div>屋齡:3.1年</div>
+					</div>
+					<div class="row main_block_detail">
+						<div class="sameRow">類型:電梯大樓</div>
+					</div>
+					<div class="row main_block_detail">
+						<div class="sameRow">樓層:3~3/7樓</div>
+					</div>
+
+					<div class="row">
+						<a href="appointment1.html" class="check_btn main_block_detail btn  dropdown-toggle" >
+							預約看屋
+						</a>
+					</div>
+					<div class="row">
+						<a class="follow_btn main_block_detail btn  dropdown-toggle" >
+							收藏房屋
+						</a>					
+					</div>	
+				</div>				
+			</div>
+			<!-- 主區塊右側結束 -->
+		</div>
+		<!-- 主區塊第一列結束 -->
+	</div>
+	<!-- 主區塊結束 -->
+
+	<!-- 分隔線 -->
+	<div class="limited container">
+		<div class="row">
+			<hr>
+		</div>
+	</div>
+	
+
+
+	<!-- 詳細資訊表單開始 -->
+	<div class="limited container detail-total-form">
+		<!-- 詳細資訊表格左邊 -->
+		<!-- 其中一欄資訊表格開始 -->
+		<div class="row">
+			<h3 class="form_title">房屋詳細資料</h3>
+			<table class="table table-hover">
+				
+				<thead>
+				</thead>
+				<tbody>
+					<tr>
+						<td>資料</td>
+						<td>資料</td>
+						<td>資料</td>
+					</tr>
+					<tr>
+						<td>資料</td>
+						<td>資料</td>
+						<td>資料</td>
+					</tr>
+					<tr>
+						<td>資料</td>
+						<td>資料</td>
+						<td>資料</td>
+					</tr>
+					<tr>
+						<td>資料</td>
+						<td>資料</td>
+						<td>資料</td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+		<!-- 其中一欄資訊表格結束 -->
+
+		<!-- 其中一欄資訊表格開始 -->
+		<div class="row">
+			<h3 class="form_title">建物登記坪數</h3>
+			<table class="table table-hover">
+				
+				<thead>
+				</thead>
+				<tbody>
+					<tr>
+						<td>資料</td>
+						<td>資料</td>
+						<td>資料</td>
+					</tr>
+					<tr>
+						<td>資料</td>
+						<td>資料</td>
+						<td>資料</td>
+					</tr>
+
+				</tbody>
+			</table>
+
+		</div>
+		<!-- 其中一欄資訊表格結束 -->
+	</div>
+	<!-- 詳細資訊表單結束 -->
+
+	<!-- GOOGLE MAP開始 -->
+	<div class="limited container mb10">
+		<div class="row">			
+			<h3 class="form_title">周邊機能地圖</h3>
+			<div id="map"></div>		
+		</div>
+	</div>
+	
+	<script>
+		function initMap() {
+			var uluru = {lat: -25.363, lng: 131.044};
+			var map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 4,
+				center: uluru
+			});
+			var marker = new google.maps.Marker({
+				position: uluru,
+				map: map
+			});
+		}
+	</script>
+	<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATnJXHEYAz4_W9Aoy_T2y6wdRNdKy3r6g&callback=initMap">
+</script>
+
+<!-- GOOGLE MAP結束 -->
+
+<!-- 推薦物件區塊開始 -->
+<div class="limited container">	
+	<div class="row">
+		<h3 class="form_title">熱門物件推薦</h3>
+
+		<!-- 一格介紹區塊開始 -->
+		<div class="col-xs-12 col-sm-4 rec_item pd20 ad_describe_block">
+			<a href="">
+				<div class="row">
+					<img class="rechouse_Img" src="imgs/rechouse1.jpeg">
+				</div>
+
+				<div class="row">				
+					<div class="col-xs-12 col-sm-8">
+						<h4>
+							我是推薦物件的標題
+						</h4>
+					</div>
+					<div class="col-xs-12 col-sm-4 rec_price">
+						<h4>
+							1300萬
+						</h4>
+					</div>
+				</div>
+
+				<div class="rec_content">台北市內湖區新明路</div>
+				<div class="rec_type sameRow">
+					電梯大樓
+				</div> 
+				<div class="rec_pattern sameRow">
+					3房(室)2廳2衛
+				</div>
+				<div class="rec_age sameRow">
+					15年
+				</div>
+			</a>			
+		</div>
+		<!-- 一格介紹區塊結束 -->
+		<!-- 一格介紹區塊開始 -->
+		<div class="col-xs-12 col-sm-4 rec_item pd20 ad_describe_block">
+			<a href="#">
+				<div class="row">
+					<img class="rechouse_Img" src="imgs/rechouse2.jpeg">
+				</div>
+
+				<div class="row" >				
+					<div class="col-xs-12 col-sm-8">
+						<h4>
+							我是推薦物件的標題
+						</h4>
+					</div>
+					<div class="col-xs-12 col-sm-4 rec_price">
+						<h4>
+							1300萬
+						</h4>
+					</div>
+				</div>
+
+				<div class="rec_content">台北市內湖區新明路</div>
+				<div class="rec_type sameRow">
+					電梯大樓
+				</div> 
+				<div class="rec_pattern sameRow">
+					3房(室)2廳2衛
+				</div>
+				<div class="rec_age sameRow">
+					15年
+				</div>	
+			</a>		
+		</div>
+		<!-- 一格介紹區塊結束 -->
+		<!-- 一格介紹區塊開始 -->
+		<div class="col-xs-12 col-sm-4 rec_item pd20 ad_describe_block">
+			<a href="#">
+				<div class="row">
+					<img class="rechouse_Img" src="imgs/rechouse3.jpeg">
+				</div>
+
+				<div class="row">				
+					<div class="col-xs-12 col-sm-8">
+						<h4>
+							我是推薦物件的標題
+						</h4>
+					</div>
+					<div class="col-xs-12 col-sm-4 rec_price">
+						<h4>
+							1300萬
+						</h4>
+					</div>
+				</div>
+
+				<div class="rec_content">台北市內湖區新明路</div>
+				<div class="rec_type sameRow">
+					電梯大樓
+				</div> 
+				<div class="rec_pattern sameRow">
+					3房(室)2廳2衛
+				</div>
+				<div class="rec_age sameRow">
+					15年
+				</div>	
+			</a>		
+		</div>
+		<!-- 一格介紹區塊結束 -->
+
+	</div>
+</div>
+
+
+
+<!-- 推薦物件區塊結束 -->
+
+
+
+<!-- 換頁按鈕 -->
+<div class="limited container">
+	<div class="row">
+		<ul class="pager">
+			<li><a href="#">至第一頁</a></li>
+			<li><a href="#">上一頁</a></li>
+			<li><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li><a href="#">6</a></li>
+			<li><a href="#">7</a></li>
+			<li><a href="#">8</a></li>
+			<li><a href="#">9</a></li>
+			<li><a href="#">10</a></li>
+			<li><a href="#">下一頁</a></li>
+			<li><a href="#">至最後一頁</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- 廣告區塊 -->
+<div id="abgne_float_ad">
+	<button type="button" class="ad_btn btn btn-default" data-toggle="tooltip" data-placement="left" title="提示文字111">
+		按鈕1
+	</button><br>
+	<button type="button" class="ad_btn btn btn-default" data-toggle="tooltip" data-placement="left" title="提示文字222">
+		按鈕2
+	</button><br>
+	<button type="button" class="ad_btn btn btn-default" data-toggle="tooltip" data-placement="left" title="提示文字333">
+		按鈕3			
+	</button>	
+</div>
+<!-- 廣告區塊結束 -->
+<footer class="container-fluid">
+	<div class="container text-center">
+		<div class="col-xs-12 col-sm-2">
+			<a href="#">HOME</a>
+		</div>
+		<div class="col-xs-12 col-sm-2">
+			<a href="#">OUR TEAM</a>
+		</div>
+		<div class="col-xs-12 col-sm-2">
+			<a href="#">COMMUNITIES</a>
+		</div>
+		<div class="col-xs-12 col-sm-2">
+			<a href="#">COMMUNITIES</a>
+		</div>
+		<div class="col-xs-12 col-sm-2">
+			<a href="#">COMMUNITIES</a>
+		</div>
+		<div class="col-xs-12 col-sm-2">
+			<a href="#">CONTACT US</a>
+		</div></div>
+		<div class="copyri text-center">
+			<p><small>Copyright © 2017 For House</small></p>
+		</div>
+	</footer>
+
+
+	<!-- 燈箱內容開始 -->
+	<!-- 註冊燈箱 -->
+	<div class="modal fade" id="registerForm">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<a href='#loginForm' data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span> 登入</a>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="text-center"><label class="control-label">註冊會員</label></h4>
+				</div>
+				<form class="form-horizontal" action="" method="post">
+					<div class="input-group margin-top">
+						<input type="text" class="form-control" id="mem_mobile" name="mem_mobile" placeholder="手機號碼">
+						<span class="input-group-btn">
+							<button type="button" class="btn btn-default" id="send_code">發送驗證碼</button>
+						</span>
+					</div>
+					<div class="form-group margin-top">
+						<input type="text" class="form-control box-width" id="get_code" name="get_code" placeholder="輸入驗證碼">
+					</div>
+					<div class="form-group margin-top">
+						<input type="email" class="form-control box-width" id="mem_id" name="mem_id" placeholder="帳號(請輸入email)">
+					</div>
+					<div class="form-group margin-top">
+						<input type="password" class="form-control box-width" id="password1" name="Password" placeholder="密碼">
+					</div>
+					<div class="form-group margin-top">
+						<input type="password" class="form-control box-width" id="password2" placeholder="確認密碼">
+					</div>
+					<div class="form-group margin-top">
+						<input type="text" class="form-control box-width" id="mem_name" name="memName" placeholder="姓名">
+					</div>
+					<div class="form-group margin-top">
+						<input type="email" class="form-control box-width" id="mem_address" name="Address" placeholder="地址">
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-1 col-sm-11">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="aggrement"> 若要繼續註冊，請先閱讀並同意好房事的服務條款 & 隱私權政策
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<button type="button" class="btn btn-primary btn-lg btn-block box-width">註冊</button>
+						<div class="col-sm-offset-10 col-sm-2">
+							<button type="button" class="btn btn-default btn-xs" id="magicBtn2">貼</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- 登入燈箱 -->
+	<div class="modal fade" id="loginForm">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">登入</h4>
+				</div>
+				<form class="form-horizontal" action="loginCheck.do" method="post">
+					<div class="form-group margin-top">
+						<input type="email" class="form-control box-width" id="loginid" name="ID" placeholder="帳號(請輸入email)">
+					</div>
+					<div class="form-group margin-top">
+						<input type="password" class="form-control box-width" id="password" name="Password" placeholder="密碼">
+					</div>
+					<div class="form-group">
+						<button type="button" class="btn btn-primary btn-lg btn-block box-width">登入</button>
+						<div class="col-sm-offset-10 col-sm-2">
+							<button type="button" class="btn btn-default btn-xs" id="magicBtn1">貼</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- 燈箱內容結束 -->
+
+
+	<!-- 以下是所有的JAVASCRIPT -->
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>	
+	<script>
+	// 1.tooltip的javascript開始
+	$(function(){
+		$('[data-toggle="tooltip"]').tooltip();
+	});
+	// tooltip的javascript結束
+
+	// 2.廣告區塊的javascript開始
+	// 當網頁載入完
+	window.onload=function(){
+		var $win = $(window),
+		$ad = $('#abgne_float_ad').css('opacity', 0).show(),	// 讓廣告區塊變透明且顯示出來
+		_width = $ad.width(),
+		_height = $ad.height()*4,
+		_diffY = 20, _diffX = 20,	// 距離右及下方邊距
+		_moveSpeed = 1000;	// 移動的速度
+
+	// 先把 #abgne_float_ad 移動到定點
+	$ad.css({
+		top: $(document).height(),
+		left: $win.width() - _width - _diffX,
+		opacity: 1
+	});
+
+	// 幫網頁加上 scroll 及 resize 事件
+	$win.bind('scroll resize', function(){
+		var $this = $(this);
+
+		// 控制 #abgne_float_ad 的移動
+		$ad.stop().animate({
+			top: $this.scrollTop() + $this.height() - _height - _diffY,
+			left: $this.scrollLeft() + $this.width() - _width - _diffX
+		}, _moveSpeed);
+	}).scroll();	// 觸發一次 scroll()
+};
+// 廣告區塊的javascript結束
+
+</script>
+
+</body>
+</html>
